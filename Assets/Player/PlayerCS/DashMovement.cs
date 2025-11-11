@@ -1,41 +1,33 @@
-using System.Collections;
 using UnityEngine;
 
 public class DashMovement : RigidbodyMovement
 {
     [SerializeField] private float _dashSpeed = 10f;
-    [SerializeField] private float _dashDuration = 0.2f;
-
+    [SerializeField,Tooltip("通常の移動スピード")] private float _normalSpeed = 5f;
     private bool _isDashing = false;
+
     public bool IsDashing => _isDashing;
+
+    public void SetDashing(bool isDashing)
+    {
+        _isDashing = isDashing;
+    }
 
     public override void Move(Vector2 input)
     {
-        if (_isDashing) return;
-        base.Move(input);
-    }
-
-    public void StartDash(Vector2 direction)
-    {
-        if (!_isDashing && direction.sqrMagnitude > 0)
+        // 入力がない場合は止まる
+        if (input.sqrMagnitude <= 0.01f)
         {
-            StartCoroutine(DashCoroutine(direction));
-        }
-    }
-
-    private IEnumerator DashCoroutine(Vector2 dir)
-    {
-        _isDashing = true;
-        float timer = 0f;
-
-        while (timer < _dashDuration)
-        {
-            Vector3 move = new Vector3(dir.x, 0f, dir.y).normalized * _dashSpeed;
-            _rb.linearVelocity = new Vector3(move.x, _rb.linearVelocity.y, move.z);
-            timer += Time.deltaTime;
-            yield return null;
+            _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+            return;
         }
 
-        _isDashing = false;
+        // ダッシュ中は速度を上げる
+        float currentSpeed = _isDashing ? _dashSpeed : _normalSpeed;
+
+        // 入力方向へ移動
+        Vector3 move = new Vector3(input.x, 0f, input.y).normalized * currentSpeed;
+        Vector3 newVelocity = new Vector3(move.x, _rb.linearVelocity.y, move.z);
+        _rb.linearVelocity = newVelocity;
     }
 }

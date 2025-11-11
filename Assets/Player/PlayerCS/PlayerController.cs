@@ -4,31 +4,21 @@ public class PlayerController : MonoBehaviour
 {
     private IPlayerInput _input;
     private DashMovement _dashMovement;
+    private PlayerInputReader _inputReader;
 
     private void Awake()
     {
-        _dashMovement = GetComponent<DashMovement>();
         _input = GetComponent<IPlayerInput>();
+        _dashMovement = GetComponent<DashMovement>();
+        _inputReader = GetComponent<PlayerInputReader>();
     }
 
     private void Update()
     {
-        if (_dashMovement.IsDashing)
-        {
-            // ダッシュ中はDashMovement側が処理するので何もしない
-            return;
-        }
+        // ダッシュ状態を更新
+        _dashMovement.SetDashing(_inputReader.IsDashing);
 
-        if ((_input as PlayerInputReader).IsDashing)
-        {
-                _dashMovement.StartDash(_input.MoveInput);
-            Debug.Log("Dash!");
-        }
-        else
-        {
-            //移動入力を取得して移動処理を呼び出す
-            _dashMovement.Move(_input.MoveInput);
-            Debug.Log("Move");
-        }
+        // 常に入力方向に移動
+        _dashMovement.Move(_input.MoveInput);
     }
 }

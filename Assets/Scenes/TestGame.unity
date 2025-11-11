@@ -871,7 +871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DashMovement
   _speed: 10
   _dashSpeed: 50
-  _dashDuration: 0.5
+  _normalSpeed: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
