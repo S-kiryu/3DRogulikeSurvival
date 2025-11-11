@@ -1,27 +1,31 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputReader : MonoBehaviour, IPlayerInput
 {
+    private DashMovement _dashMovement;
     private Vector2 _moveInput;
+    public Vector2 MoveInput => _moveInput;
     private bool _isDashing = false;
     public bool IsDashing => _isDashing;
-    public Vector2 MoveInput => _moveInput;
 
-    public void OnMove(InputValue value) => _moveInput = value.Get<Vector2>();
-
-    public void OnSprint(InputValue value)
+    private void Awake()
     {
+        _dashMovement = GetComponent<DashMovement>();
+    }
 
-        if (value.isPressed)
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        if (_isDashing == false)
         {
-            _isDashing = true;
-
-        }
-        else
-        {
-            _isDashing = false;
+            _moveInput = context.ReadValue<Vector2>();
         }
     }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        _isDashing = context.ReadValueAsButton();
+    }
+
+
 }

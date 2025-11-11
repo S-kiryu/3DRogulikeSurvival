@@ -3,34 +3,32 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private IPlayerInput _input;
-    private IMovement _movement;
-    private PlayerInputReader _playerInputReader;
+    private DashMovement _dashMovement;
 
     private void Awake()
     {
-        _playerInputReader = GetComponent<PlayerInputReader>();
+        _dashMovement = GetComponent<DashMovement>();
         _input = GetComponent<IPlayerInput>();
-        _movement = GetComponent<IMovement>();
     }
 
     private void Update()
     {
-        if(_playerInputReader.IsDashing == true)
+        if (_dashMovement.IsDashing)
         {
-            var dashMovement = GetComponent<DashMovement>();
-            if (dashMovement != null)
-            {
-                dashMovement.Dash(_playerInputReader.MoveInput);
-            }
-            else
-            {
-                Debug.LogError("DashMovement コンポーネントがないよ");
-            }
+            // ダッシュ中はDashMovement側が処理するので何もしない
+            return;
+        }
+
+        if ((_input as PlayerInputReader).IsDashing)
+        {
+                _dashMovement.StartDash(_input.MoveInput);
+            Debug.Log("Dash!");
         }
         else
         {
             //移動入力を取得して移動処理を呼び出す
-            _movement.Move(_input.MoveInput);
+            _dashMovement.Move(_input.MoveInput);
+            Debug.Log("Move");
         }
     }
 }
