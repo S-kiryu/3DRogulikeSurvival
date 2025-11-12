@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DashMovement : RigidbodyMovement
 {
-    [SerializeField] private float _dashSpeed = 10f;
+    [SerializeField,Tooltip("ダッシュスピード")] private float _dashSpeed = 10f;
     [SerializeField,Tooltip("通常の移動スピード")] private float _normalSpeed = 5f;
     private bool _isDashing = false;
 
@@ -25,9 +25,8 @@ public class DashMovement : RigidbodyMovement
         // ダッシュ中は速度を上げる
         float currentSpeed = _isDashing ? _dashSpeed : _normalSpeed;
 
-        // 入力方向へ移動
-        Vector3 move = new Vector3(input.x, 0f, input.y).normalized * currentSpeed;
-        Vector3 newVelocity = new Vector3(move.x, _rb.linearVelocity.y, move.z);
-        _rb.linearVelocity = newVelocity;
+        //引数を元にRigidbodyの速度を設定する、ベクトルの長さをに１正規化してから速度を掛ける
+        Vector3 move = new Vector3(input.x, _rb.linearVelocity.y, input.y).normalized * currentSpeed;
+        _rb.linearVelocity = move;
     }
 }

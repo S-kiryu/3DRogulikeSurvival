@@ -6,6 +6,7 @@ public class PlayerInputReader : MonoBehaviour, IPlayerInput
     private Vector2 _moveInput;
     public Vector2 MoveInput => _moveInput;
 
+    [SerializeField,Tooltip("ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©")]
     private bool _isDashing = false;
     public bool IsDashing => _isDashing;
 
