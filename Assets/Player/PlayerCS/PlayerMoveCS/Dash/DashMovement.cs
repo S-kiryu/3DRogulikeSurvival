@@ -26,9 +26,16 @@ public class DashMovement : RigidbodyMovement
         float currentSpeed = _isDashing ? _dashSpeed : _normalSpeed;
 
         //引数を元にRigidbodyの速度を設定する、ベクトルの長さをに１正規化してから速度を掛ける
-        Vector3 horizontalMove = new Vector3(input.x, 0, input.y).normalized * currentSpeed;
+        Vector3 direction = new Vector3(input.x, 0, input.y).normalized * currentSpeed;
 
-        // Y軸の速度は保持する
-        _rb.linearVelocity = new Vector3(horizontalMove.x, _rb.linearVelocity.y, horizontalMove.z);
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        _rb.MoveRotation(targetRotation);
+
+        Vector3 moveVelocity = transform.forward * currentSpeed;
+
+        // Y軸の速度は保持（ジャンプなど残す）
+        moveVelocity.y = _rb.linearVelocity.y;
+
+        _rb.linearVelocity = moveVelocity;
     }
 }
