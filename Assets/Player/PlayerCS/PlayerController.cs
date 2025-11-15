@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
         // ダッシュ状態を更新
         _dashMovement.SetDashing(_inputReader.IsDashing);
 

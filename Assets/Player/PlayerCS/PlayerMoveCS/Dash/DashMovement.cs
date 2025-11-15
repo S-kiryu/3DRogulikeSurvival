@@ -26,7 +26,9 @@ public class DashMovement : RigidbodyMovement
         float currentSpeed = _isDashing ? _dashSpeed : _normalSpeed;
 
         //引数を元にRigidbodyの速度を設定する、ベクトルの長さをに１正規化してから速度を掛ける
-        Vector3 move = new Vector3(input.x, _rb.linearVelocity.y, input.y).normalized * currentSpeed;
-        _rb.linearVelocity = move;
+        Vector3 horizontalMove = new Vector3(input.x, 0, input.y).normalized * currentSpeed;
+
+        // Y軸の速度は保持する
+        _rb.linearVelocity = new Vector3(horizontalMove.x, _rb.linearVelocity.y, horizontalMove.z);
     }
 }
