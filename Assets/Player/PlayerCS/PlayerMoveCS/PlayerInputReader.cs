@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputReader : MonoBehaviour, IPlayerInput
+public class PlayerInputReader : MonoBehaviour, IInputProvider
 {
     private Vector2 _moveInput;
-    public Vector2 MoveInput => _moveInput;
+    private bool _isDashing;
 
-    [SerializeField,Tooltip("ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©")]
-    private bool _isDashing = false;
+    public Vector2 MoveInput => _moveInput;
     public bool IsDashing => _isDashing;
 
     public void OnMove(InputAction.CallbackContext context)

@@ -1,24 +1,30 @@
 using UnityEngine;
-public class RigidbodyMovement : MonoBehaviour, IMovement
+
+public class RigidbodyMovementExecutor : MonoBehaviour, IMovementExecutor
 {
-    //移動速度
-    [SerializeField] private float _speed = 5f;
-    //継承先でも使えるようにする
-    protected Rigidbody _rb;
+    private Rigidbody _rb;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    public virtual void Move(Vector2 input)
+    public void Execute(Vector2 direction, float speed)
     {
-        //引数を元にRigidbodyの速度を設定する、ベクトルの長さをに１正規化してから速度を掛ける
-        Vector3 move = new Vector3(input.x, 0f, input.y).normalized;
-        Vector3 moveVelocity = move * _speed;
-        //Y軸の速度はそのままにする
-        Vector3 newVelocity = new Vector3(moveVelocity.x, _rb.linearVelocity.y, moveVelocity.z);
-        //Velocityを更新
-        _rb.linearVelocity = newVelocity;
+        // 入力がない場合は停止
+        if (direction.sqrMagnitude <= 0.01f)
+        {
+            _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+            return;
+        }
+
+        // 移動方向を3D空間に変換
+        Vector3 moveDirection = transform.forward * direction.y + transform.right * direction.x;
+        moveDirection = moveDirection.normalized;
+
+        // 移動（Y軸速度は保持）
+        Vector3 velocity = moveDirection * speed;
+        velocity.y = _rb.linearVelocity.y;
+        _rb.linearVelocity = velocity;
     }
 }

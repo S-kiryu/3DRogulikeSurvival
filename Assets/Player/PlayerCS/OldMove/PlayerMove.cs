@@ -1,19 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
     private bool _isGrounded = true;
-    private CharacterController _controller;
     private Vector2 _moveInput;
     private Rigidbody _rb;
 
-    private void Awake()
-    {
-        _controller = GetComponent<CharacterController>();
-    }
 
     //On○○という名前のメソッドはInput Systemから自動的に呼び出される
     public void OnMove(InputValue value)
