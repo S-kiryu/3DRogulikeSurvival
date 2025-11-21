@@ -15,8 +15,10 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
+        // “ü—ÍŽæ“¾
         Vector2 moveInput = _inputProvider.MoveInput;
         bool isDashing = _inputProvider.IsDashing;
+
 
         float speed = _settings.GetSpeed(isDashing);
         _movementExecutor.Execute(moveInput, speed);

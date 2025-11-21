@@ -13,6 +13,7 @@ public class PlayerDirectionByMoveAndCamera : MonoBehaviour
         camForward.y = 0;
         camForward.Normalize();
 
+        // カメラの右方向ベクトルを取得し、Y成分を0にしてプレイヤーに合わせる
         Vector3 camRight = cameraTransform.right;
         camRight.y = 0;
         camRight.Normalize();
