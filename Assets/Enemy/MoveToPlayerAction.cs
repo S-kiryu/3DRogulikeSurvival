@@ -5,38 +5,63 @@ public class MoveToPlayerAction : GoapAction
 {
     public Transform player;
     public float moveSpeed = 3f;
-    public float chaseDistance = 5f; // 追い続ける最大距離
-    public float stopDistance = 1.5f; // 近づいたと見なす距離
+    public float stopDistance = 1.5f;
+
+    private PlayerStatus _playerStatus;
 
     private void Awake()
     {
         Preconditions = new Dictionary<string, bool> {
             { "PlayerVisible", true }
         };
-
         Effects = new Dictionary<string, bool> {
             { "IsNearPlayer", true }
         };
     }
 
+    private void Start()
+    {
+        // PlayerStatusをキャッシュ
+        if (player != null)
+        {
+            _playerStatus = player.GetComponent<PlayerStatus>();
+            if (_playerStatus == null)
+            {
+                Debug.LogError($"PlayerStatus not found on player object: {player.name}");
+            }
+        }
+    }
+
     public override bool CheckCanExecute()
     {
-        return player != null;
+        if (player == null)
+        {
+            Debug.LogWarning("MoveToPlayerAction: player is not assigned");
+            return false;
+        }
+
+        if (_playerStatus == null)
+        {
+            Debug.LogWarning("MoveToPlayerAction: PlayerStatus not found");
+            return false;
+        }
+
+        return true;
     }
 
     public override bool ExecuteAction()
     {
-        // もしプレイヤーが死んでいたらこのアクションを終了
+        // プレイヤーが死んでいたらこのアクションを終了
         if (!IsPlayerAlive())
         {
             Debug.Log("Player is dead → stop chasing");
-            return true; // アクション成功扱い(終了)
+            return true;
         }
 
         // プレイヤーとの距離
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // player が遠く離れたら → 追っかけ継続
+        // stopDistanceより遠ければ移動（常に追い続ける）
         if (distance > stopDistance)
         {
             transform.position = Vector3.MoveTowards(
@@ -44,16 +69,22 @@ public class MoveToPlayerAction : GoapAction
                 player.position,
                 moveSpeed * Time.deltaTime
             );
-
-            return false;
+            Debug.Log($"Chasing player... Distance: {distance:F2}");
+            return false; // まだ追跡中
         }
-        return true;
+
+        // プレイヤーに到達したが、離れたらまた追尾するため false を返す
+        Debug.Log($"Player reached! Distance: {distance:F2}");
+        return false; // ずっと実行し続ける
     }
 
     private bool IsPlayerAlive()
     {
-        // プレイヤーにHPが０かどうか
-        var health = player.GetComponent<PlayerHealth>();
-        return health != null && health.CurrentHP > 0;
+        if (_playerStatus == null)
+        {
+            Debug.LogWarning("PlayerStatus is null in IsPlayerAlive");
+            return false;
+        }
+        return _playerStatus.IsAlive;
     }
 }

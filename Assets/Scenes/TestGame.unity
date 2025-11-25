@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 1687408689}
   - component: {fileID: 1687408688}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -864,7 +864,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e65cca8f37eb7a4c95bac7431a54da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoapAgent
-  actions: []
+  actions:
+  - {fileID: 1687408689}
 --- !u!114 &1687408689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,6 +881,7 @@ MonoBehaviour:
   cost: 1
   player: {fileID: 1788893953}
   moveSpeed: 3
+  stopDistance: 1.5
 --- !u!136 &1687408690
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -988,11 +990,12 @@ GameObject:
   - component: {fileID: 1788893950}
   - component: {fileID: 1788893955}
   - component: {fileID: 1788893956}
+  - component: {fileID: 1788893962}
   - component: {fileID: 1788893961}
   - component: {fileID: 1788893960}
+  - component: {fileID: 1788893957}
   - component: {fileID: 1788893959}
   - component: {fileID: 1788893958}
-  - component: {fileID: 1788893957}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1315,6 +1318,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementController
   _settings: {fileID: 11400000, guid: d60287a74d28ec24da6f1849c4161869, type: 2}
+--- !u!114 &1788893962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788893949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b5fb2f25c04fb42ac80c53ba9f1c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatus
+  _settings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
 --- !u!1 &1814188564
 GameObject:
   m_ObjectHideFlags: 0
