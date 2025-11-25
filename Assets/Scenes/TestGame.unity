@@ -878,7 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayerAction
   cost: 1
-  player: {fileID: 0}
+  player: {fileID: 1788893953}
   moveSpeed: 3
 --- !u!136 &1687408690
 CapsuleCollider:
