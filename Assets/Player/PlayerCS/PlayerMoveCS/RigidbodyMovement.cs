@@ -9,6 +9,11 @@ public class RigidbodyMovementExecutor : MonoBehaviour, IMovementExecutor
         _rb = GetComponent<Rigidbody>();
     }
 
+    /// <summary>
+    /// ｘとｚ方向に移動
+    /// </summary>
+    /// <param name="direction"></param>
+    /// <param name="speed"></param>
     public void Execute(Vector2 direction, float speed)
     {
         // 入力がない場合は停止
@@ -18,7 +23,7 @@ public class RigidbodyMovementExecutor : MonoBehaviour, IMovementExecutor
             return;
         }
 
-        // 移動方向を3D空間に変換
+        //ローカル方向に変換、forwardとrightでオブジェクトの前と後ろを判定
         Vector3 moveDirection = transform.forward * direction.y + transform.right * direction.x;
         moveDirection = moveDirection.normalized;
 
