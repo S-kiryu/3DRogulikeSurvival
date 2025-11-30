@@ -15,11 +15,4 @@ public class Skill : ScriptableObject
     public GameObject effectPrefab;
 
     public SkillEffect skillEffect;
-    public void Activate(Vector3 position)
-    {
-        if (effectPrefab != null)
-        {
-            GameObject.Instantiate(effectPrefab, position, Quaternion.identity);
-        }
-    }
 }
