@@ -16,9 +16,9 @@ public class SkillButton : MonoBehaviour
         _skill = skill;
         _onSelected = onSelected;
 
-        _icon.sprite = skill.icon;
-        _text.text = skill.skillName;
-        _desc.text = skill.skillDescription;
+        //_icon.sprite = skill.icon;
+        //_text.text = skill.skillName;
+        //_desc.text = skill.skillDescription;
     }
     // ボタンがクリックされたときに呼ばれる
     public void OnClick()

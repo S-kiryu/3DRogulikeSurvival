@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[CreateAssetMenu(fileName = "PowerUpEffect", menuName = "Game/SkillEffect/PowerUp")]
 public class PowerUpEffect : SkillEffect
 {
     public float increaseAmount = 5f;

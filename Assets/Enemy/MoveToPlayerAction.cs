@@ -69,7 +69,6 @@ public class MoveToPlayerAction : GoapAction
                 player.position,
                 moveSpeed * Time.deltaTime
             );
-            Debug.Log($"Chasing player... Distance: {distance:F2}");
             return false; // Ç‹Çæí«ê’íÜ
         }
 
