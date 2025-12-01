@@ -9,4 +9,6 @@ public class StatusSettings : ScriptableObject
     public int MaxStamina => _maxStamina;
     [SerializeField] private int _maxMana = 30;
     public int MaxMana => _maxMana;
+    [SerializeField]private float _attackPower = 10f;
+    public float AttackPower => _attackPower;
 }
