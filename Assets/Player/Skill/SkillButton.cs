@@ -13,12 +13,14 @@ public class SkillButton : MonoBehaviour
     // スキルとコールバックを設定する
     public void SetSkill(Skill skill, System.Action<Skill> onSelected)
     {
+        Debug.Log(skill.icon);
+
         _skill = skill;
         _onSelected = onSelected;
 
-        //_icon.sprite = skill.icon;
-        //_text.text = skill.skillName;
-        //_desc.text = skill.skillDescription;
+        _icon.sprite = skill.icon;
+        _text.text = skill.skillName;
+        _desc.text = skill.skillDescription;
     }
     // ボタンがクリックされたときに呼ばれる
     public void OnClick()

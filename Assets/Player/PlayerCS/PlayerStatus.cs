@@ -52,7 +52,6 @@ public class PlayerStatus : MonoBehaviour
         CurrentExp -= ExpToNextLevel;
         Level++;
         Debug.Log($"Level Up!!! Œ»İ‚ÌƒŒƒxƒ‹: {Level}");
-        Debug.Log(_levelUpManager);
         if (_levelUpManager != null)
         {
             _levelUpManager.OnLevelUp();
