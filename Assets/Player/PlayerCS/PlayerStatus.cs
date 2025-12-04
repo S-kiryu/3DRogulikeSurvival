@@ -4,8 +4,6 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private LevelUpManager _levelUpManager;
     [SerializeField] private StatusSettings _settings;
-    [SerializeField] private GameObject _katanaObject;
-    public GameObject KatanaObject => _katanaObject;
     //Œ»İ‚ÌƒŒƒxƒ‹
     public int Level { get; private set; } = 1;
     //Œ»İ‚ÌŒoŒ±’l
