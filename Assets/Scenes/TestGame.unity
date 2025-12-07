@@ -2418,6 +2418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatus
   _levelUpManager: {fileID: 249746270}
   _settings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
+  effectController: {fileID: 1895153558}
 --- !u!114 &1788893963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2865,7 +2866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6964463949074146126, guid: 115c087153954674ca4154efb282a254, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

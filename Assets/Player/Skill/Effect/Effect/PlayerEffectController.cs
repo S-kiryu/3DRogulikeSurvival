@@ -23,6 +23,7 @@ public class PlayerEffectController : MonoBehaviour
         }
     }
 
+    // Effect の ON/OFF を切り替えるメソッド
     public void SetEffect(EffectType type, bool active)
     {
         if (effectDict.TryGetValue(type, out var obj))
@@ -35,11 +36,12 @@ public class PlayerEffectController : MonoBehaviour
         }
     }
 
+    // Effect の ON/OFF 状態を取得するメソッド
     public bool GetEffectActive(EffectType type)
     {
         if (effectDict.TryGetValue(type, out var obj))
         {
-            return obj.activeSelf;   // ← ON/OFF 状態を返す
+            return obj.activeSelf;
         }
         else
         {

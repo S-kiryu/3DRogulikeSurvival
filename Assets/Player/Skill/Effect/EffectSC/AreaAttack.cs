@@ -3,18 +3,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AreaAttackEffect", menuName = "Game/SkillEffect/AreaAttack")]
 public class AreaAttack: SkillEffect
 {
-    //[SerializeField] private EffectFolder _effectFolder;
+    [SerializeField] private PlayerEffectController _playerEffectController;
 
     public override void Apply(PlayerStatus player) 
     {
-        Debug.Log("AreaAttack Effect Applied");
-        //if (_effectFolder._katanaObject != true)
-        //{
-        //    _effectFolder._katanaObject.SetActive(true);
-        //}
-        //else 
-        //{
-        //    //‚±‚±‚É‘‰Á‚Ìˆ—‚ğ‘‚­
-        //}
+        if (_playerEffectController.GetEffectActive(EffectType.Katana))
+        {
+            //‚±‚±‚É‘‰Á‚Ìˆ—‚ğ‘‚­
+        }
+        else
+        {
+            
+        }
     }
 }

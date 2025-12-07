@@ -4,6 +4,7 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private LevelUpManager _levelUpManager;
     [SerializeField] private StatusSettings _settings;
+    public PlayerEffectController effectController;
     //Œ»İ‚ÌƒŒƒxƒ‹
     public int Level { get; private set; } = 1;
     //Œ»İ‚ÌŒoŒ±’l
