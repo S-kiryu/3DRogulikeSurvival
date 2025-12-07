@@ -34,6 +34,19 @@ public class PlayerEffectController : MonoBehaviour
             Debug.LogWarning($"Effect {type} not found!");
         }
     }
+
+    public bool GetEffectActive(EffectType type)
+    {
+        if (effectDict.TryGetValue(type, out var obj))
+        {
+            return obj.activeSelf;   // Å© ON/OFF èÛë‘Çï‘Ç∑
+        }
+        else
+        {
+            Debug.LogWarning($"Effect {type} not found!");
+            return false;
+        }
+    }
 }
 public enum EffectType
 {
