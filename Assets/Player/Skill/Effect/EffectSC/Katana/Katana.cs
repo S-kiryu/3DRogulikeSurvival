@@ -2,9 +2,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "KatanaEffect", menuName = "Game/SkillEffect/GatKatana")]
 public class Katana : SkillEffect
 {
-    [SerializeField] private EffectFolder _effectFolder;
+    [SerializeField] private PlayerEffectController _playerEffectController;
     public override void Apply(PlayerStatus player)
     {
-        _effectFolder.Katana.SetActive(true);
+        _playerEffectController.SetEffect(EffectType.Katana, true);
     }
 }
