@@ -45,7 +45,6 @@ public class PlayerEffectController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Effect {type} not found!");
             return false;
         }
     }
