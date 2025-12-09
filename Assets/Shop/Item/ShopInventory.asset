@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ShopInventory
   m_EditorClassIdentifier: Assembly-CSharp::ShopInventory
   items:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8e70dc139507a0c4587386ef75a71ab9, type: 2}
+  - {fileID: 11400000, guid: 8e70dc139507a0c4587386ef75a71ab9, type: 2}

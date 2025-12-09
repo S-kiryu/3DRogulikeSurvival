@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class ButtonCreator : MonoBehaviour
 
         foreach (var item in inventory.items)
         {
+            Debug.Log(item);
             // É{É^ÉìÇê∂ê¨
             Button newButton = Instantiate(buttonPrefab);
 
@@ -22,11 +24,11 @@ public class ButtonCreator : MonoBehaviour
             Transform nameTextTransform = newButton.transform.Find("NameText");
             Transform moneyTextTransform = newButton.transform.Find("MoneyText");
 
-            TextMeshProUGUI nameText = nameTextTransform.GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI moneyText = moneyTextTransform.GetComponent<TextMeshProUGUI>();
+            //TextMeshProUGUI nameText = nameTextTransform.GetComponent<TextMeshProUGUI>();
+            //TextMeshProUGUI moneyText = moneyTextTransform.GetComponent<TextMeshProUGUI>();
 
-            nameText.text = item.GetItemName();
-            moneyText.text = item.GetPrice().ToString() + "G";
+            //nameText.text = item.GetItemName();
+            //moneyText.text = item.GetPrice().ToString() + "G";
 
             var capturedItem = item;
             newButton.onClick.AddListener(() => capturedItem.ExecuteAction());
