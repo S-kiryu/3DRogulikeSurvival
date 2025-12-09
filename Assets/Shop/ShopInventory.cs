@@ -1,0 +1,9 @@
+using NUnit.Framework.Interfaces;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "ShopInventory", menuName = "ScriptableObjects/ShopInventory")]
+public class ShopInventory : ScriptableObject
+{
+    public List<ItemData> items = new List<ItemData>();
+}
