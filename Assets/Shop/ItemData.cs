@@ -13,8 +13,8 @@ public class ItemData : ScriptableObject
     [SerializeField] private Sprite icon;
     [Tooltip("アイテムの値段")]
     [SerializeField] private int price;
-    [Tooltip("アイテムのレベル")]
-    [SerializeField] private int itemLv;
+    [Tooltip("アイテムのMaxレベル")]
+    [SerializeField] private int maxItemLv;
     [Header("アクション設定")]
     [Tooltip("このアイテムがクリックされた時に実行されるスクリプト")]
     [SerializeField] private List<ItemAction> itemActions = new List<ItemAction>();
@@ -42,7 +42,7 @@ public class ItemData : ScriptableObject
 
     public int GetItemLv()
     {
-        return itemLv;
+        return maxItemLv;
     }
 
     public void ExecuteAction()
