@@ -16,6 +16,6 @@ MonoBehaviour:
   description: aaa
   icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
   price: 10
-  itemLv: 0
+  maxItemLv: 0
   itemActions:
   - {fileID: 11400000, guid: e115fd0bae0bb48498c6200fd0b54785, type: 2}

@@ -1567,6 +1567,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &989228146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 989228148}
+  - component: {fileID: 989228147}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &989228147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989228146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66927a5893d83634aa5323b64462d395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatusManager
+  defaultSettings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
+  Status:
+    Level: 0
+    CurrentExp: 0
+    MaxHealth: 0
+    CurrentHealth: 0
+    AttackPower: 0
+--- !u!4 &989228148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989228146}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.35355, y: 1.85748, z: 0.35355}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1012436166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,7 +2468,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatus
   _levelUpManager: {fileID: 249746270}
-  _settings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
   effectController: {fileID: 1895153558}
 --- !u!114 &1788893963
 MonoBehaviour:
@@ -2894,3 +2944,4 @@ SceneRoots:
   - {fileID: 187526953}
   - {fileID: 1417377908}
   - {fileID: 1895153557}
+  - {fileID: 989228148}
