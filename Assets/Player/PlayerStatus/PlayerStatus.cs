@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private LevelUpManager _levelUpManager;
-    public PlayerEffectController effectController;
-
     private PlayerRuntimeStatus status;
+    public PlayerEffectController effectController;
+    public event Action OnDead;
 
     private void Awake()
     {
@@ -23,6 +24,11 @@ public class PlayerStatus : MonoBehaviour
         status.CurrentHealth = Mathf.Max(status.CurrentHealth, 0);
 
         Debug.Log($"Player HP: {status.CurrentHealth}");
+
+        if (CurrentHealth <= 0)
+        {
+            OnDead?.Invoke();
+        }
     }
 
     public void AddAttackPower(float amount)
