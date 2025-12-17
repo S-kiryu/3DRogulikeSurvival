@@ -69,7 +69,7 @@ public class MoveToPlayerAction : GoapAction
                 player.position,
                 moveSpeed * Time.deltaTime
             );
-            return false; // まだ追跡中
+            return false; // 追跡中
         }
 
         // プレイヤーに到達したが、離れたらまた追尾するため false を返す
