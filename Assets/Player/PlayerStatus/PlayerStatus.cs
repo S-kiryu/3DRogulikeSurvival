@@ -39,6 +39,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void AddExp(int amount)
     {
+        Debug.Log("GetXp");
         status.CurrentExp += amount;
 
         if (status.CurrentExp >= PlayerStatusManager.Instance.ExpToNextLevel)
