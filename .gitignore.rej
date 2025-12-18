@@ -1,0 +1,6 @@
+diff a/.gitignore b/.gitignore	(rejected hunks)
+@@ -97,3 +97,4 @@
+ 
+ # Auto-generated scenes by play mode tests
+ /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
++Assets/ignore.meta
