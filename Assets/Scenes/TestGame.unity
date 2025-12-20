@@ -2196,11 +2196,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1262094987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f9d18c760e9334cba8250b27dd8d2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 715b66bcb9f454744a18bce525bf6705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinAction
+  xpAmount: 100000
   playerStatus: {fileID: 1788893962}
-  coinsPerExp: 1
 --- !u!65 &1262094989
 BoxCollider:
   m_ObjectHideFlags: 0
