@@ -1,16 +1,51 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaMove : MonoBehaviour
+public class AreaMove : MonoBehaviour, IAttack
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float coolTime = 1f;
+    public float CoolTime => coolTime;
+    public EffectType Type => EffectType.AreaAttack;
+
+    [SerializeField] float attackRadius = 2f;
+    [SerializeField] LayerMask enemyLayer;
+    [SerializeField] int attackPower = 10;
+
+    private readonly HashSet<EnemyStatus> hitEnemies = new();
+
+    public void Attack()
     {
-        
+        Debug.Log("Area Attack!");
+
+        Collider[] hits = Physics.OverlapSphere(
+            transform.position,
+            attackRadius   // Å© LayerMask ÇàÍíUäOÇ∑
+        );
+
+        Debug.Log($"Hits count = {hits.Length}");
+
+        foreach (var hit in hits)
+        {
+            Debug.Log($"Hit object: {hit.name}, layer={hit.gameObject.layer}");
+
+            var enemy = hit.GetComponentInParent<EnemyStatus>();
+            if (enemy == null)
+            {
+                Debug.Log("EnemyStatus not found in parent");
+                continue;
+            }
+
+            Debug.Log("EnemyStatus FOUND");
+            enemy.TakeDamage(attackPower);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
     {
-        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
+#endif
 }

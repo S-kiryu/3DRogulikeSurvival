@@ -19,6 +19,7 @@ public class EnemyStatus : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
     {
+        Debug.Log($"Enemy damaged: {damage}");
         CurrentHealth -= damage;
 
         if (CurrentHealth <= 0)

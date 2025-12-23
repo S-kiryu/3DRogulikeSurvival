@@ -73,7 +73,6 @@ public class MoveToPlayerAction : GoapAction
         }
 
         // プレイヤーに到達したが、離れたらまた追尾するため false を返す
-        Debug.Log($"Player reached! Distance: {distance:F2}");
         return false; // ずっと実行し続ける
     }
 
