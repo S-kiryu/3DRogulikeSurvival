@@ -26,7 +26,6 @@ public class AttackManager : MonoBehaviour
         foreach (var attack in attacks)
         {
             bool active = effectController.GetEffectActive(attack.Type);
-            Debug.Log($"{attack.Type} active={active}, timer={timers[attack]}");
 
             if (!active) continue;
 

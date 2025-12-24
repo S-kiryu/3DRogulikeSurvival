@@ -8,6 +8,7 @@ public class PlayerRuntimeStatus
     public int CurrentHealth;
     public float AttackPower;
 
+    //初期ステータス
     public PlayerRuntimeStatus(StatusSettings settings)
     {
         MaxHealth = settings.MaxHealth;

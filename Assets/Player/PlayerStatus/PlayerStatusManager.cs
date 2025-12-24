@@ -4,7 +4,7 @@ public class PlayerStatusManager : MonoBehaviour
 {
     public static PlayerStatusManager Instance;
 
-    [SerializeField] private StatusSettings defaultSettings;
+    [SerializeField] private StatusSettings _defaultSettings;
     public PlayerRuntimeStatus Status;
 
     private void Awake()
@@ -18,8 +18,9 @@ public class PlayerStatusManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        Status = new PlayerRuntimeStatus(defaultSettings);
+        Status = new PlayerRuntimeStatus(_defaultSettings);
     }
 
+    //ŽŸ‚É•K—v‚Èexp‚ð•Ï‚¦‚é
     public int ExpToNextLevel => Status.Level * 10;
 }

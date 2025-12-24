@@ -5,6 +5,7 @@ public class EnemyTeik : MonoBehaviour
     [SerializeField]private PlayerStatus _playerStatus;
     [SerializeField]private int _damageAmount = 10;
 
+    //“–‚½‚Á‚½ƒvƒŒƒCƒ„[‚ÉUŒ‚‚·‚é
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) 

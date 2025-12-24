@@ -4,26 +4,27 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private LevelUpManager _levelUpManager;
-    private PlayerRuntimeStatus status;
+    private PlayerRuntimeStatus _status;
     public PlayerEffectController effectController;
     public event Action OnDead;
 
     private void Awake()
     {
-        status = PlayerStatusManager.Instance.Status;
+        _status = PlayerStatusManager.Instance.Status;
     }
 
-    public int Level => status.Level;
-    public int CurrentExp => status.CurrentExp;
-    public int CurrentHealth => status.CurrentHealth;
-    public float AttackPower => status.AttackPower;
+    public int Level => _status.Level;
+    public int CurrentExp => _status.CurrentExp;
+    public int CurrentHealth => _status.CurrentHealth;
+    public float AttackPower => _status.AttackPower;
 
+    //UŒ‚‚ğó‚¯‚é
     public void TakeDamage(int amount)
     {
-        status.CurrentHealth -= amount;
-        status.CurrentHealth = Mathf.Max(status.CurrentHealth, 0);
+        _status.CurrentHealth -= amount;
+        _status.CurrentHealth = Mathf.Max(_status.CurrentHealth, 0);
 
-        Debug.Log($"Player HP: {status.CurrentHealth}");
+        Debug.Log($"Player HP: {_status.CurrentHealth}");
 
         if (CurrentHealth <= 0)
         {
@@ -31,32 +32,39 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    //UŒ‚—Íã¸
     public void AddAttackPower(float amount)
     {
-        status.AttackPower += amount;
-        Debug.Log($"Œ»İ‚ÌUŒ‚—ÍF{status.AttackPower}");
+        _status.AttackPower += amount;
+        Debug.Log($"Œ»İ‚ÌUŒ‚—ÍF{_status.AttackPower}");
     }
 
+
+    /// <summary>
+    /// XP‚Ì‰ÁZˆ—
+    /// </summary>
+    /// <param name="amount"></param>
     public void AddExp(int amount)
     {
         Debug.Log("GetXp");
-        status.CurrentExp += amount;
+        _status.CurrentExp += amount;
 
-        while(status.CurrentExp >= PlayerStatusManager.Instance.ExpToNextLevel)
+        while(_status.CurrentExp >= PlayerStatusManager.Instance.ExpToNextLevel)
         {
             LevelUp();
         }
     }
 
+    //ƒŒƒxƒ‹UP
     private void LevelUp()
     {
-        status.CurrentExp -= PlayerStatusManager.Instance.ExpToNextLevel;
-        status.Level++;
+        _status.CurrentExp -= PlayerStatusManager.Instance.ExpToNextLevel;
+        _status.Level++;
 
-        Debug.Log($"Level Up!!! Œ»İ‚ÌƒŒƒxƒ‹: {status.Level}");
+        Debug.Log($"Level Up!!! Œ»İ‚ÌƒŒƒxƒ‹: {_status.Level}");
 
         _levelUpManager?.OnLevelUp();
     }
 
-    public bool IsAlive => status.CurrentHealth > 0;
+    public bool IsAlive => _status.CurrentHealth > 0;
 }

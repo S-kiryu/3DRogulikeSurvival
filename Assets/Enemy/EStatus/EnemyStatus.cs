@@ -19,11 +19,12 @@ public class EnemyStatus : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
     {
-        Debug.Log($"Enemy damaged: {damage}");
         CurrentHealth -= damage;
+        Debug.Log(CurrentHealth);
 
         if (CurrentHealth <= 0)
         {
+            Debug.Log("‚µ‚ñ‚¾‚Ÿ‚Ÿ‚Ÿ‚ŸI");
             Die();
         }
     }
