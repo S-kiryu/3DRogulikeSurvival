@@ -11,13 +11,10 @@ public class AttackManager : MonoBehaviour
     void Start()
     {
         // 最初に全部集める
-        foreach (var attack in GetComponents<MonoBehaviour>())
+        foreach (var attack in FindObjectsByType<AttakBase>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
-            if (attack is IAttack a)
-            {
-                attacks.Add(a);
-                timers[a] = 0f;
-            }
+            attacks.Add(attack);
+            timers[attack] = 0f;
         }
 
         effectController.SetEffect(EffectType.AreaAttack, true);
@@ -25,6 +22,7 @@ public class AttackManager : MonoBehaviour
 
     void Update()
     {
+        // デバッグ
         foreach (var attack in attacks)
         {
             bool active = effectController.GetEffectActive(attack.Type);
@@ -42,6 +40,7 @@ public class AttackManager : MonoBehaviour
             }
         }
 
+        // 攻撃処理
         foreach (var attack in attacks)
         {
             // Effect が ON の時だけ攻撃

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaMove : MonoBehaviour, IAttack
+public class AreaMove : AttakBase
 {
     [SerializeField] private float coolTime = 1f;
-    public float CoolTime => coolTime;
-    public EffectType Type => EffectType.AreaAttack;
+    public override float CoolTime => coolTime;
+    public override EffectType Type => EffectType.AreaAttack;
 
     [SerializeField] float attackRadius = 2f;
     [SerializeField] LayerMask enemyLayer;
@@ -13,7 +13,7 @@ public class AreaMove : MonoBehaviour, IAttack
 
     private readonly HashSet<EnemyStatus> hitEnemies = new();
 
-    public void Attack()
+    public override void Attack()
     {
         Debug.Log("Area Attack!");
 
