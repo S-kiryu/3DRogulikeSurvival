@@ -6,6 +6,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private LevelUpManager _levelUpManager;
     private PlayerRuntimeStatus _status;
     public PlayerEffectController effectController;
+    public event Action OnGameClear;
     public event Action OnDead;
 
     private void Awake()

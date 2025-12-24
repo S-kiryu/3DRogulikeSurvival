@@ -17,27 +17,27 @@ public class AttackManager : MonoBehaviour
             timers[attack] = 0f;
         }
 
-        effectController.SetEffect(EffectType.AreaAttack, true);
+        //effectController.SetEffect(EffectType.AreaAttack, true);
     }
 
     void Update()
     {
-        // デバッグ
-        foreach (var attack in attacks)
-        {
-            bool active = effectController.GetEffectActive(attack.Type);
+        //// デバッグ
+        //foreach (var attack in attacks)
+        //{
+        //    bool active = effectController.GetEffectActive(attack.Type);
 
-            if (!active) continue;
+        //    if (!active) continue;
 
-            timers[attack] += Time.deltaTime;
+        //    timers[attack] += Time.deltaTime;
 
-            if (timers[attack] >= attack.CoolTime)
-            {
-                Debug.Log("Calling Attack()");
-                timers[attack] = 0f;
-                attack.Attack();
-            }
-        }
+        //    if (timers[attack] >= attack.CoolTime)
+        //    {
+        //        Debug.Log("Calling Attack()");
+        //        timers[attack] = 0f;
+        //        attack.Attack();
+        //    }
+        //}
 
         // 攻撃処理
         foreach (var attack in attacks)

@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class ButtonCreator : MonoBehaviour
 {
-    [SerializeField] private ScrollRect scrollRect;
-    [SerializeField] private Button buttonPrefab;
-    [SerializeField] private ShopInventory inventory;
+    [SerializeField] private ScrollRect _scrollRect;
+    [SerializeField] private Button _buttonPrefab;
+    [SerializeField] private ShopInventory _inventory;
     void Start()
     {
 
 
-        foreach (var item in inventory.items)
+        foreach (var item in _inventory.items)
         {
             
 
             // É{É^ÉìÇê∂ê¨
-            Button newButton = Instantiate(buttonPrefab);
+            Button newButton = Instantiate(_buttonPrefab);
 
             //Canvas ÇÃéqÇ…Ç∑ÇÈ
-            newButton.transform.SetParent(scrollRect.content, false);
+            newButton.transform.SetParent(_scrollRect.content, false);
 
             Transform nameTextTransform = newButton.transform.Find("NameText");
             Transform moneyTextTransform = newButton.transform.Find("MoneyText");

@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13a025e53333d2449d1fb81ccf26b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonCreator
-  scrollRect: {fileID: 1628177280}
-  buttonPrefab: {fileID: 5836622230612711348, guid: a25dee904fb0e804abce830c6e751bb8, type: 3}
-  inventory: {fileID: 11400000, guid: d7b9161725d94a94fbeb7f0959a8e86b, type: 2}
+  _scrollRect: {fileID: 0}
+  _buttonPrefab: {fileID: 0}
+  _inventory: {fileID: 0}
 --- !u!1 &96985040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2358,7 +2358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66927a5893d83634aa5323b64462d395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatusManager
-  defaultSettings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
+  _defaultSettings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
   Status:
     Level: 0
     CurrentExp: 0

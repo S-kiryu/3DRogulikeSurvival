@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class KatanaMove : MonoBehaviour
+public class KatanaMove : AttakBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float _coolTime = 1f;
+    public override float CoolTime => _coolTime;
 
-    // Update is called once per frame
-    void Update()
+    public override EffectType Type => EffectType.Katana;
+
+    public override void Attack() 
     {
-        
+
     }
 }

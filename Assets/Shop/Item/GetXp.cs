@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class GetXp : MonoBehaviour
 {
-    [SerializeField] private int xpAmount = 10;
-    [SerializeField] private PlayerStatus playerStatus;
+    [SerializeField] private int _xpAmount = 10;
+    [SerializeField] private PlayerStatus _playerStatus;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-                playerStatus.AddExp(xpAmount);
+                _playerStatus.AddExp(_xpAmount);
                 Debug.Log("プレイヤーがXPを取得しました！");
                 Destroy(gameObject);
             

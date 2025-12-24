@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class AreaMove : AttakBase
 {
-    [SerializeField] private float coolTime = 1f;
-    public override float CoolTime => coolTime;
+    [SerializeField] private float _coolTime = 1f;
+    public override float CoolTime => _coolTime;
     public override EffectType Type => EffectType.AreaAttack;
 
-    [SerializeField] float attackRadius = 2f;
-    [SerializeField] LayerMask enemyLayer;
-    [SerializeField] int attackPower = 10;
+    [SerializeField] private float _attackRadius = 2f;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int attackPower = 10;
 
     private readonly HashSet<EnemyStatus> hitEnemies = new();
 
@@ -19,7 +19,7 @@ public class AreaMove : AttakBase
 
         Collider[] hits = Physics.OverlapSphere(
             transform.position,
-            attackRadius   // © LayerMask ‚ğˆê’UŠO‚·
+            _attackRadius   // © LayerMask ‚ğˆê’UŠO‚·
         );
 
         Debug.Log($"Hits count = {hits.Length}");
@@ -45,7 +45,7 @@ public class AreaMove : AttakBase
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Gizmos.DrawWireSphere(transform.position, _attackRadius);
     }
 #endif
 }

@@ -944,8 +944,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96cc1b3b6b002cc41993c36fbdcb4f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AreaMove
-  coolTime: 1
-  attackRadius: 2
+  _coolTime: 1
+  _attackRadius: 2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1
@@ -2077,7 +2077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66927a5893d83634aa5323b64462d395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStatusManager
-  defaultSettings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
+  _defaultSettings: {fileID: 11400000, guid: 77c14f3b611eb0f4a8e672efd82104f4, type: 2}
   Status:
     Level: 0
     CurrentExp: 0

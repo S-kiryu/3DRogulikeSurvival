@@ -21,7 +21,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        _playerStatus.OnGameClear += GameClear;
         _playerStatus.OnDead += GameOver;
+    }
+
+    private void GameClear()
+    {
+        _uiManager.ShowGameClearUI();
     }
 
     private void GameOver()
