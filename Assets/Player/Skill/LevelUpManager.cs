@@ -5,7 +5,7 @@ public class LevelUpManager : MonoBehaviour
 {
     [SerializeField] private SkillDatabase _database;
     [SerializeField] private SkillSelectUI _ui;
-    [SerializeField] private PlayerStatus _player; // Inspector‚ÅŽw’è
+    [SerializeField] private PlayerStatus _player;
 
     public void OnLevelUp()
     {
