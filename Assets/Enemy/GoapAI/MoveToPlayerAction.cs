@@ -64,9 +64,15 @@ public class MoveToPlayerAction : GoapAction
         // stopDistanceÇÊÇËâìÇØÇÍÇŒà⁄ìÆÅièÌÇ…í«Ç¢ë±ÇØÇÈÅj
         if (distance > stopDistance)
         {
+            Vector3 targetPos = new Vector3(
+                player.position.x,
+                transform.position.y,
+                player.position.z
+            );
+
             transform.position = Vector3.MoveTowards(
                 transform.position,
-                player.position,
+                targetPos,
                 moveSpeed * Time.deltaTime
             );
             return false; // í«ê’íÜ
