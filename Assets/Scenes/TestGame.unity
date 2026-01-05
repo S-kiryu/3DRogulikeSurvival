@@ -3553,6 +3553,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7369086880652890784, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
       propertyPath: player
       value: 
