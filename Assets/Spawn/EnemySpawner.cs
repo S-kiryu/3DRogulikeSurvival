@@ -31,6 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
             while (elapsedTime < _waveDuration)
             {
+                Debug.Log("ウェーブ開始");
                 SpawnWaveEnemies(currentWave);
                 yield return new WaitForSeconds(_spawnInterval);
                 elapsedTime += _spawnInterval;
@@ -50,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
         {
             for (int i = 0; i < enemyData.SpawnCount; i++)
             {
+                Debug.Log("敵をスポーン");
                 Transform spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
                 Instantiate(enemyData.EnemyPrefab, spawnPoint.position, Quaternion.identity);
             }

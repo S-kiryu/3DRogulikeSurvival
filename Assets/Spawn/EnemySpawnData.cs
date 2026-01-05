@@ -4,6 +4,6 @@ using UnityEngine;
 [Serializable]
 public class EnemySpawnData
 {
-    public GameObject enemyPrefab;
-    public int spawnCount;
+    public GameObject EnemyPrefab;
+    public int SpawnCount;
 }
