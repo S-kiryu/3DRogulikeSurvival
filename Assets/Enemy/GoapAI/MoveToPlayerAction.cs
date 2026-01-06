@@ -21,14 +21,18 @@ public class MoveToPlayerAction : GoapAction
 
     private void Start()
     {
-        // PlayerStatus‚ðƒLƒƒƒbƒVƒ…
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+        }
+
         if (player != null)
         {
             _playerStatus = player.GetComponent<PlayerStatus>();
-            if (_playerStatus == null)
-            {
-                Debug.LogError($"PlayerStatus not found on player object: {player.name}");
-            }
         }
     }
 

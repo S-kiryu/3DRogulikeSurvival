@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class EnemyTeik : MonoBehaviour
 {
-    [SerializeField]private PlayerStatus _playerStatus;
-    [SerializeField]private int _damageAmount = 10;
+    [SerializeField] private int _damageAmount = 10;
 
-    //“–‚½‚Á‚½ƒvƒŒƒCƒ„[‚ÉUŒ‚‚·‚é
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
+        if (other.CompareTag("Player"))
         {
-            _playerStatus.TakeDamage(_damageAmount);
+            PlayerStatus playerStatus = other.GetComponent<PlayerStatus>();
+            if (playerStatus != null && playerStatus.IsAlive)
+            {
+                playerStatus.TakeDamage(_damageAmount);
+            }
         }
     }
 }

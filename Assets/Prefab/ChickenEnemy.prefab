@@ -810,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26406ed1ab00ee45b959b256edd63ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTeik
-  _playerStatus: {fileID: 6023797740975607207, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+  _playerStatus: {fileID: 0}
   _damageAmount: 10
 --- !u!65 &1183280191545204836
 BoxCollider:
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayerAction
   cost: 1
-  player: {fileID: 8805895845479349422, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+  player: {fileID: 0}
   moveSpeed: 3
   stopDistance: 1.5
 --- !u!114 &3341109982462049178
