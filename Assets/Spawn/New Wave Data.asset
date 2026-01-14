@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   Enemies:
   - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
-    SpawnCount: 5
+    SpawnCount: 2
   - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
-    SpawnCount: 4
+    SpawnCount: 2
+  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+    SpawnCount: 2
+  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+    SpawnCount: 2
+  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+    SpawnCount: 2
