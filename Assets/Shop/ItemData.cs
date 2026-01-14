@@ -19,6 +19,8 @@ public class ItemData : ScriptableObject
     [Tooltip("このアイテムがクリックされた時に実行されるスクリプト")]
     [SerializeField] private List<ItemAction> itemActions = new List<ItemAction>();
 
+    public UnityEvent<bool> OnPurchaseAttempt = new UnityEvent<bool>();
+
     // ゲッターメソッド
     public string GetItemName()
     {
@@ -43,6 +45,37 @@ public class ItemData : ScriptableObject
     public int GetItemLv()
     {
         return _maxItemLv;
+    }
+
+    // 金額チェック付きで購入を試みる
+    public bool TryPurchaseAndExecute()
+    {
+        if (PlayerStatusManager.Instance == null)
+        {
+            Debug.LogError("PlayerStatusManagerが見つかりません");
+            OnPurchaseAttempt.Invoke(false);
+            return false;
+        }
+
+        // 購入可能か確認
+        if (!PlayerStatusManager.Instance.CanPurchase(_price))
+        {
+            Debug.LogWarning($"所持金不足: {_itemName}の購入に失敗しました。必要: {_price}、所持: {PlayerStatusManager.Instance.GetMoney()}");
+            OnPurchaseAttempt.Invoke(false);
+            return false;
+        }
+
+        // 金額を消費
+        if (PlayerStatusManager.Instance.TrySpendMoney(_price))
+        {
+            ExecuteAction();
+            OnPurchaseAttempt.Invoke(true);
+            Debug.Log($"{_itemName}を購入しました。残り所持金: {PlayerStatusManager.Instance.GetMoney()}");
+            return true;
+        }
+
+        OnPurchaseAttempt.Invoke(false);
+        return false;
     }
 
     public void ExecuteAction()
