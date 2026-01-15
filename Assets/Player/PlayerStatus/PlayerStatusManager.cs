@@ -8,7 +8,7 @@ public class PlayerStatusManager : MonoBehaviour
     [SerializeField] private StatusSettings _defaultSettings;
     public PlayerRuntimeStatus Status;
 
-    private int _money = 0;
+    [SerializeField]private int _money = 0;
 
     public UnityEvent<int> OnMoneyChanged = new UnityEvent<int>();
 

@@ -211,6 +211,8 @@ MonoBehaviour:
   _scrollRect: {fileID: 1628177280}
   _buttonPrefab: {fileID: 5836622230612711348, guid: a25dee904fb0e804abce830c6e751bb8, type: 3}
   _inventory: {fileID: 11400000, guid: d7b9161725d94a94fbeb7f0959a8e86b, type: 2}
+  _purchasableColor: {r: 1, g: 1, b: 1, a: 1}
+  _notPurchasableColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &96985040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2365,6 +2367,10 @@ MonoBehaviour:
     MaxHealth: 0
     CurrentHealth: 0
     AttackPower: 0
+  _money: 0
+  OnMoneyChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1824589007
 GameObject:
   m_ObjectHideFlags: 0

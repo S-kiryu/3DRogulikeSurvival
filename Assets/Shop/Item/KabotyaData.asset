@@ -19,3 +19,6 @@ MonoBehaviour:
   _maxItemLv: 0
   itemActions:
   - {fileID: 11400000, guid: e115fd0bae0bb48498c6200fd0b54785, type: 2}
+  OnPurchaseAttempt:
+    m_PersistentCalls:
+      m_Calls: []
