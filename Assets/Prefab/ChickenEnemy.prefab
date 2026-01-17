@@ -810,7 +810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c26406ed1ab00ee45b959b256edd63ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTeik
-  _playerStatus: {fileID: 0}
   _damageAmount: 10
 --- !u!65 &1183280191545204836
 BoxCollider:
@@ -974,6 +973,7 @@ GameObject:
   - component: {fileID: 3341109982462049178}
   - component: {fileID: 8692698176879979721}
   - component: {fileID: 4761208676445937763}
+  - component: {fileID: 1705801822278885901}
   m_Layer: 0
   m_Name: ChickenEnemy
   m_TagString: Untagged
@@ -1063,6 +1063,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   _statusSettings: {fileID: 11400000, guid: 3b6122ed3f489c543998582deb540c46, type: 2}
+  _dropXp: {fileID: 1705801822278885901}
+--- !u!114 &1705801822278885901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210767164444615586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4251acc231f39a34383217063fe6149d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropXp
+  xpPrefab: {fileID: 5994423035375441069, guid: d02ccc7c8177e0643b4dbbaa80944183, type: 3}
+  xpAmount: 5
+  dropRadius: 1
 --- !u!1 &6379720492789601664
 GameObject:
   m_ObjectHideFlags: 0

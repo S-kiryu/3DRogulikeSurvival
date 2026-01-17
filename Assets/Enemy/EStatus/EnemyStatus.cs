@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyStatus : MonoBehaviour
 {
     [SerializeField] private StatusSettings _statusSettings;
+    [SerializeField] private DropXp _dropXp;
 
     public int CurrentHealth { get; private set; }
     public int MaxHealth => _statusSettings.MaxHealth;
@@ -24,6 +25,7 @@ public class EnemyStatus : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
+            _dropXp.Drop();
             Debug.Log("‚µ‚ñ‚¾‚Ÿ‚Ÿ‚Ÿ‚ŸI");
             Die();
         }

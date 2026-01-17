@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59978a817d3202d4fbcc4c738a435fb1, type: 3}
   m_Name: EnemyStatus
   m_EditorClassIdentifier: Assembly-CSharp::StatusSettings
-  _maxHealth: 100
+  _maxHealth: 20
   _maxStamina: 50
   _maxMana: 30
   _attackPower: 10
