@@ -4,6 +4,7 @@ public class EnemyStatus : MonoBehaviour
 {
     [SerializeField] private StatusSettings _statusSettings;
     [SerializeField] private DropXp _dropXp;
+    private ScoreManager _scoreManager;
 
     public float CurrentHealth { get; private set; }
     public int MaxHealth => _statusSettings.MaxHealth;
@@ -12,6 +13,16 @@ public class EnemyStatus : MonoBehaviour
     private void Awake()
     {
         CurrentHealth = MaxHealth;
+    }
+
+    private void Start()
+    {
+        _scoreManager = ScoreManager.instance;
+
+        if (_scoreManager == null)
+        {
+            Debug.LogError("ScoreManager.instance ‚ª null ‚Å‚·");
+        }
     }
 
     /// <summary>
@@ -25,6 +36,7 @@ public class EnemyStatus : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
+            _scoreManager.ScoreUP(100);
             _dropXp.Drop();
             Debug.Log("‚µ‚ñ‚¾‚Ÿ‚Ÿ‚Ÿ‚ŸI");
             Die();
