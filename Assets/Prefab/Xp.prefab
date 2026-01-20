@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1340690276807137244}
   - component: {fileID: 4203396728818773935}
   - component: {fileID: 7806482794825473487}
+  - component: {fileID: 6024848149890618748}
   m_Layer: 0
   m_Name: Xp
   m_TagString: Untagged
@@ -125,3 +126,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GetXp
   _xpAmount: 10
+--- !u!114 &6024848149890618748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5994423035375441069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7dc6dce63dedb4f849302691ecd993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::XpMobe
+  upDistance: 0.5
+  downDistance: 0
+  speed: 1
