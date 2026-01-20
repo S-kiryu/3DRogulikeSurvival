@@ -55,10 +55,16 @@ public class MoveToPlayerAction : GoapAction
 
     public override bool ExecuteAction()
     {
+        if(LevelUpManager.Instance != null && LevelUpManager.Instance.IsPaused == true)
+        {
+            Debug.Log(" LevelUp Pause - stop chasing");
+            return false; // レベルアップ中は動かない
+        }
+
         // プレイヤーが死んでいたらこのアクションを終了
         if (!IsPlayerAlive())
         {
-            Debug.Log("Player is dead → stop chasing");
+            Debug.Log(" stop chasing");
             return true;
         }
 

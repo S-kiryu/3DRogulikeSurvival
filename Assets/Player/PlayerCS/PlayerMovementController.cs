@@ -15,6 +15,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
+        if (LevelUpManager.Instance != null && LevelUpManager.Instance.IsPaused)
+        {
+            _movementExecutor.Stop();
+            return;
+        }
+
         // “ü—ÍŽæ“¾
         Vector2 moveInput = _inputProvider.MoveInput;
         bool isDashing = _inputProvider.IsDashing;

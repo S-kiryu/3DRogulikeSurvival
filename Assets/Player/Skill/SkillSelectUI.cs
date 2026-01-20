@@ -6,33 +6,39 @@ public class SkillSelectUI : MonoBehaviour
     [SerializeField] private SkillButton[] _buttons;
     private System.Action<Skill> _onSelected;
 
-    /// <summary>
-    /// スキル選択画面を表示
-    /// </summary>
-    /// <param name="skills"></param>
-    /// <param name="onSelected"></param>
+    //ボタンの設定
     public void Open(List<Skill> skills, System.Action<Skill> onSelected)
     {
+
         _onSelected = onSelected;
         gameObject.SetActive(true);
 
         for (int i = 0; i < _buttons.Length; i++)
         {
-            _buttons[i].SetSkill(skills[i], SelectSkill);
+            if (i < skills.Count)
+            {
+                _buttons[i].SetSkill(skills[i], SelectSkill);
+            }
         }
     }
 
-
-    /// <summary>
-    /// 選んだスキルを渡して選択画面を閉じる
-    /// </summary>
-    /// <param name="skill"></param>
+    //スキル選択時の処理
     private void SelectSkill(Skill skill)
     {
-        _onSelected?.Invoke(skill);
+
+        if (_onSelected != null)
+        {
+            _onSelected.Invoke(skill);
+        }
+        else
+        {
+            Debug.LogError("[SkillSelectUI] _onSelected is NULL!");
+        }
+
         Close();
     }
 
+    //UIを閉じる
     public void Close()
     {
         gameObject.SetActive(false);

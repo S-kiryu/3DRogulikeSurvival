@@ -16,34 +16,18 @@ public class AttackManager : MonoBehaviour
             attacks.Add(attack);
             timers[attack] = 0f;
         }
-
-        //effectController.SetEffect(EffectType.AreaAttack, true);
     }
 
     void Update()
     {
-        //// デバッグ
-        //foreach (var attack in attacks)
-        //{
-        //    bool active = effectController.GetEffectActive(attack.Type);
-
-        //    if (!active) continue;
-
-        //    timers[attack] += Time.deltaTime;
-
-        //    if (timers[attack] >= attack.CoolTime)
-        //    {
-        //        Debug.Log("Calling Attack()");
-        //        timers[attack] = 0f;
-        //        attack.Attack();
-        //    }
-        //}
+        if (LevelUpManager.Instance != null &&
+            LevelUpManager.Instance.IsPaused)
+            return;
 
         // 攻撃処理
         foreach (var attack in attacks)
         {
             // Effect が ON の時だけ攻撃
-            Debug.Log($"{attack.Type} active = {effectController.GetEffectActive(attack.Type)}");
             if (!effectController.GetEffectActive(attack.Type))
                 continue;
 

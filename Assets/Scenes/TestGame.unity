@@ -176,6 +176,7 @@ MonoBehaviour:
   _icon: {fileID: 82961394}
   _text: {fileID: 1012436168}
   _desc: {fileID: 1688342663}
+  _button: {fileID: 82961393}
 --- !u!114 &82961393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +328,7 @@ MonoBehaviour:
   _icon: {fileID: 95603168}
   _text: {fileID: 2104771594}
   _desc: {fileID: 153508755}
+  _button: {fileID: 95603167}
 --- !u!114 &95603167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,6 +671,7 @@ MonoBehaviour:
   _database: {fileID: 11400000, guid: 1efed71f1d1033f43a02670ed1963772, type: 2}
   _ui: {fileID: 748180319}
   _player: {fileID: 1788893962}
+  _delayBetweenLevelUps: 0.5
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,6 +1125,7 @@ MonoBehaviour:
   _icon: {fileID: 417759898}
   _text: {fileID: 1585498796}
   _desc: {fileID: 2108592512}
+  _button: {fileID: 417759897}
 --- !u!1 &452579840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,6 +3770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Xp
       objectReference: {fileID: 0}
+    - target: {fileID: 7806482794825473487, guid: d02ccc7c8177e0643b4dbbaa80944183, type: 3}
+      propertyPath: _xpAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3788,9 +3796,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3587021784561778563, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562520100889050305, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4842244080642489556, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       propertyPath: _coolTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842244080642489556, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+      propertyPath: attackPower
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4842244080642489556, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       propertyPath: _attackRadius
