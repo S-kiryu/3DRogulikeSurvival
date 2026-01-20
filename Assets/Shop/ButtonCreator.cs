@@ -43,7 +43,7 @@ public class ButtonCreator : MonoBehaviour
             {
                 if (capturedItem.TryPurchaseAndExecute())
                 {
-                    UpdateAllButtonStates();
+                    UpdateButtonState();
                 }
             });
 
@@ -52,13 +52,13 @@ public class ButtonCreator : MonoBehaviour
             {
                 if (success)
                 {
-                    UpdateAllButtonStates();
+                    UpdateButtonState();
                 }
             });
         }
     }
 
-    private void UpdateAllButtonStates()
+    private void UpdateButtonState()
     {
         foreach (Transform child in _scrollRect.content)
         {
@@ -77,22 +77,24 @@ public class ButtonCreator : MonoBehaviour
 
     private void UpdateButtonState(Button button, ItemData item)
     {
-        if (PlayerStatusManager.Instance == null)
-            return;
-
         bool canPurchase = PlayerStatusManager.Instance.CanPurchase(item.GetPrice());
 
-        // ボタンを有効/無効に設定
         button.interactable = canPurchase;
 
-        // ボタンのテキスト色を変更
-        TextMeshProUGUI nameText = button.transform.Find("NameText").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI moneyText = button.transform.Find("MoneyText").GetComponent<TextMeshProUGUI>();
+        var colors = button.colors;
 
-        Color textColor = canPurchase ? _purchasableColor : _notPurchasableColor;
-        nameText.color = textColor;
-        moneyText.color = textColor;
+        //買えるなら白、買えないなら灰色に変更
+        colors.normalColor = canPurchase ? _purchasableColor 
+                                         : _notPurchasableColor;
+
+        colors.highlightedColor = colors.normalColor;
+        colors.pressedColor = colors.normalColor * 0.9f;
+        colors.disabledColor = _notPurchasableColor;
+
+        // ボタンの色を更新
+        button.colors = colors;
     }
+
 
     // ボタンから対応するItemDataを取得する補助メソッド
     private ItemData GetItemFromButton(Button button)
