@@ -9,9 +9,9 @@ public class AreaMove : AttakBase
 
     [SerializeField] private float _attackRadius = 2f;
     [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private int attackPower = 10;
 
     private readonly HashSet<EnemyStatus> hitEnemies = new();
+
 
     public override void Attack()
     {
@@ -19,24 +19,21 @@ public class AreaMove : AttakBase
 
         Collider[] hits = Physics.OverlapSphere(
             transform.position,
-            _attackRadius   // © LayerMask ‚ğˆê’UŠO‚·
+            _attackRadius
         );
 
-        Debug.Log($"Hits count = {hits.Length}");
-
+        //”ÍˆÍ“à‚É‚¢‚é“G‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é
         foreach (var hit in hits)
         {
-            Debug.Log($"Hit object: {hit.name}, layer={hit.gameObject.layer}");
 
             var enemy = hit.GetComponentInParent<EnemyStatus>();
             if (enemy == null)
             {
-                Debug.Log("EnemyStatus not found in parent");
                 continue;
             }
 
-            Debug.Log("EnemyStatus FOUND");
-            enemy.TakeDamage(attackPower);
+            enemy.TakeDamage(_playerStatus.AttackPower / 0.5f);
+            Debug.Log(_playerStatus.AttackPower / 0.5f + "‚ÌƒGƒŠƒAUŒ‚");
         }
     }
 

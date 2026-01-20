@@ -991,7 +991,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.9181104, y: 0, z: 16.324015}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8104532396136034642}
@@ -1076,8 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4251acc231f39a34383217063fe6149d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropXp
-  xpPrefab: {fileID: 5994423035375441069, guid: d02ccc7c8177e0643b4dbbaa80944183, type: 3}
-  xpAmount: 5
+  xpAmount: 1
   dropRadius: 1
 --- !u!1 &6379720492789601664
 GameObject:

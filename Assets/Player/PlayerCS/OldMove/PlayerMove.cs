@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
-    private bool _isGrounded = true;
     private Vector2 _moveInput;
     private Rigidbody _rb;
 

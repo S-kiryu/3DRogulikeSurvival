@@ -10,6 +10,7 @@ public class RigidbodyMovementExecutor : MonoBehaviour, IMovementExecutor
         _rb = GetComponent<Rigidbody>();
     }
 
+    //ˆÚ“®‚ğÀs‚·‚é
     public void Execute(Vector2 direction, float speed)
     {
         if (LevelUpManager.Instance != null && LevelUpManager.Instance.IsPaused)
@@ -34,11 +35,13 @@ public class RigidbodyMovementExecutor : MonoBehaviour, IMovementExecutor
         _targetVelocity.y = _rb.linearVelocity.y;
     }
 
+    //•¨—‰‰Z‚ÌXV‚²‚Æ‚ÉŒÄ‚Î‚ê‚é
     private void FixedUpdate()
     {
         _rb.linearVelocity = _targetVelocity;
     }
 
+    //“®‚«‚ğ~‚ß‚é
     public void Stop()
     {
         _targetVelocity = Vector3.zero;
