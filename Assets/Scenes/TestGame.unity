@@ -3473,7 +3473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1987145b1159184e9a2f1d8baacca44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XPpool
-  xpPrefab: {fileID: 5994423035375441069, guid: d02ccc7c8177e0643b4dbbaa80944183, type: 3}
+  xpPrefab: {fileID: 8687033442405160758, guid: d02ccc7c8177e0643b4dbbaa80944183, type: 3}
   poolSize: 100
 --- !u!4 &1994982278
 Transform:

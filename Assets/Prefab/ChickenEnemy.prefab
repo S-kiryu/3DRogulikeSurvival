@@ -1078,6 +1078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropXp
   xpAmount: 1
   dropRadius: 1
+  dropInterval: 0.1
 --- !u!1 &6379720492789601664
 GameObject:
   m_ObjectHideFlags: 0
