@@ -1,17 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Header("ウェーブ設定")]
-    [SerializeField,Tooltip("ウェーブのデータがはいってる")] private WaveData[] _waves;
-    [SerializeField,Tooltip("1ウェーブの長さ")] private float _waveDuration = 60f;
-    [SerializeField,Tooltip("１ウェーブ内のスポーンする感覚")] private float _spawnInterval = 10f;
+    [SerializeField] private WaveData[] _waves;
+    [SerializeField] private float _spawnInterval = 2f;
+    [SerializeField] private float _waveInterval = 5f;
 
     [Header("スポーン設定")]
-    [SerializeField,Tooltip("スポーンする場所")] private Transform[] _spawnPoints;
+    [SerializeField] private Transform[] _spawnPoints;
+    
 
     private int _currentWaveIndex = 0;
+    private int _aliveEnemyCount = 0;
+    private int _lastSpawnIndex = -1;
 
     private void Start()
     {
@@ -19,42 +23,96 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// ウェーブのループ処理
+    /// Wave を順番に再生する
     /// </summary>
-    /// <returns></returns>
     private IEnumerator WaveLoop()
     {
         while (_currentWaveIndex < _waves.Length)
         {
-            WaveData currentWave = _waves[_currentWaveIndex];
-            float elapsedTime = 0f;
+            WaveData wave = _waves[_currentWaveIndex];
+            Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
 
-            while (elapsedTime < _waveDuration)
-            {
-                Debug.Log("ウェーブ開始");
-                SpawnWaveEnemies(currentWave);
-                yield return new WaitForSeconds(_spawnInterval);
-                elapsedTime += _spawnInterval;
-            }
+            // ★ Wave が終わるまで待つ
+            yield return StartCoroutine(PlayWave(wave));
+
+
+            yield return new WaitUntil(() => _aliveEnemyCount <= 0);
+
+            Debug.Log($"Wave {_currentWaveIndex + 1} 終了");
+
+            yield return new WaitForSeconds(_waveInterval);
 
             _currentWaveIndex++;
         }
     }
 
     /// <summary>
-    /// スポーン処理
+    /// WaveData の中身を順番・数・間隔どおりにスポーン
     /// </summary>
-    /// <param name="wave"></param>
-    private void SpawnWaveEnemies(WaveData wave)
+    private IEnumerator PlayWave(WaveData wave)
     {
+        var spawnList = new List<EnemySpawnData>();
+
         foreach (var enemyData in wave.Enemies)
         {
             for (int i = 0; i < enemyData.SpawnCount; i++)
             {
-                Debug.Log("敵をスポーン");
-                Transform spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Length)];
-                Instantiate(enemyData.EnemyPrefab, spawnPoint.position, Quaternion.identity);
+                spawnList.Add(enemyData);
             }
         }
+
+        while (spawnList.Count > 0)
+        {
+            int index = Random.Range(0, spawnList.Count);
+            EnemySpawnData enemyData = spawnList[index];
+
+            SpawnEnemy(enemyData);
+
+            spawnList.RemoveAt(index);
+
+            yield return new WaitForSeconds(_spawnInterval);
+        }
+    }
+
+
+    /// <summary>
+    /// 敵を1体スポーンする
+    /// </summary>
+    private void SpawnEnemy(EnemySpawnData enemyData)
+    {
+        Transform spawnPoint = GetRandomSpawnPoint();
+
+        GameObject enemy = Instantiate(enemyData.EnemyPrefab,
+                    spawnPoint.position,
+                    Quaternion.identity);
+
+        _aliveEnemyCount++;
+
+        var status = enemy.GetComponent<EnemyStatus>();
+        if (status != null)
+        {
+            status.OnDead += OnEnemyDead;
+        }
+    }
+
+    private void OnEnemyDead()
+    {
+        _aliveEnemyCount--;
+    }
+
+    /// <summary>
+    /// スポーン地点をランダム取得（連続防止）
+    /// </summary>
+    private Transform GetRandomSpawnPoint()
+    {
+        int index;
+        do
+        {
+            index = Random.Range(0, _spawnPoints.Length);
+        }
+        while (index == _lastSpawnIndex && _spawnPoints.Length > 1);
+
+        _lastSpawnIndex = index;
+        return _spawnPoints[index];
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
@@ -9,6 +10,8 @@ public class EnemyStatus : MonoBehaviour
     public float CurrentHealth { get; private set; }
     public int MaxHealth => _statusSettings.MaxHealth;
     public float AttackPower => _statusSettings.AttackPower;
+
+    public event Action OnDead;
 
     private void Awake()
     {
@@ -45,6 +48,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void Die() 
     {
+        OnDead?.Invoke();
         Destroy(gameObject);
     }
 }

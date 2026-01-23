@@ -622,8 +622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4251acc231f39a34383217063fe6149d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropXp
-  xpAmount: 5
   dropRadius: 1
+  dropInterval: 0.05
 --- !u!1 &249746268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2794,13 +2794,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _waves:
   - {fileID: 11400000, guid: 6f3b76abf9d94c241b1d602e52d6618c, type: 2}
-  - {fileID: 11400000, guid: 6f3b76abf9d94c241b1d602e52d6618c, type: 2}
-  _waveDuration: 10
-  _spawnInterval: 2
+  - {fileID: 11400000, guid: 861bf857252e3a34c9cbf1a10f4d8af0, type: 2}
+  _spawnInterval: 0.1
   _spawnPoints:
   - {fileID: 1945575141}
   - {fileID: 782974188}
   - {fileID: 1295424339}
+  _waveInterval: 1
 --- !u!1 &1507826995
 GameObject:
   m_ObjectHideFlags: 0

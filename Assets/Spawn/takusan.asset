@@ -10,16 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc53b20cd790d3946bdb82421d6778b8, type: 3}
-  m_Name: New Wave Data
+  m_Name: takusan
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   Enemies:
   - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
-    SpawnCount: 5
-  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
     SpawnCount: 1
   - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
-    SpawnCount: 2
-  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
-    SpawnCount: 2
+    SpawnCount: 1
   - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
     SpawnCount: 1
