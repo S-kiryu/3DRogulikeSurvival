@@ -6,7 +6,9 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("ウェーブ設定")]
     [SerializeField] private WaveData[] _waves;
+    // ウェーブ内の敵スポーン間隔
     [SerializeField] private float _spawnInterval = 2f;
+    // ウェーブ間のインターバル
     [SerializeField] private float _waveInterval = 5f;
 
     [Header("スポーン設定")]
