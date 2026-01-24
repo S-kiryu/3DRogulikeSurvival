@@ -71,6 +71,14 @@ public class MoveToPlayerAction : GoapAction
         // プレイヤーとの距離
         float distance = Vector3.Distance(transform.position, player.position);
 
+        Vector3 lookDir = player.position - transform.position;
+        lookDir.y = 0f;
+
+        if (lookDir != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(lookDir);
+        }
+
         // stopDistanceより遠ければ移動（常に追い続ける）
         if (distance > stopDistance)
         {
