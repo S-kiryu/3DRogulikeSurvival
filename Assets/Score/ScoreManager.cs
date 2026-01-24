@@ -8,11 +8,14 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int _score = 0;
     public int Score => _score;
 
+    [SerializeField] private int _Coin = 0;
+
     public void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -27,4 +30,5 @@ public class ScoreManager : MonoBehaviour
 
         Debug.Log(point);
     }
+
 }

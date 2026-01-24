@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform _cameraTransform;
 
-    private void Update()
+    private void FixedUpdate()
     {
         // ƒJƒƒ‰‚ÌY²‚ÌŠp“x‚ğæ“¾
         float targetY = _cameraTransform.eulerAngles.y;
