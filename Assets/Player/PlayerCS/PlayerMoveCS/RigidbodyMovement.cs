@@ -47,4 +47,5 @@ public class RigidbodyMovementExecutor : MonoBehaviour, IMovementExecutor
         _targetVelocity = Vector3.zero;
         _rb.linearVelocity = Vector3.zero;
     }
+
 }

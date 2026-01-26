@@ -29,6 +29,8 @@ public class PlayerStatusManager : MonoBehaviour
     //ŽŸ‚É•K—v‚Èexp‚ð•Ï‚¦‚é
     public int ExpToNextLevel => Status.Level * 10;
 
+    #region ŠŽ‹àŠÖ˜A
+
     // ŠŽ‹à‚ðŽæ“¾
     public int GetMoney()
     {
@@ -72,4 +74,7 @@ public class PlayerStatusManager : MonoBehaviour
     {
         return _money >= price;
     }
+
+    #endregion
+
 }
