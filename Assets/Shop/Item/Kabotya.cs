@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Kabotya", menuName = "ScriptableObjects/Item/Kabotya")]
-public class Kabotya : ItemAction
+[CreateAssetMenu(fileName = "KabotyItem", menuName = "ScriptableObjects/Item/KabotyItem")]
+public class KabotyItem : ItemAction
 {
+
     public override void Execute(ItemData item)
     {
-        Debug.Log("Kabotya ‚ğw“ü!");
+        Debug.Log("‚©‚Ú‚¿‚á‚ğw“ü");
     }
 }

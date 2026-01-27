@@ -77,4 +77,19 @@ public class PlayerStatusManager : MonoBehaviour
 
     #endregion
 
+    #region ステータス強化関連
+
+    public void AddMaxHP(int value)
+    {
+        Status.MaxHealth += value;
+        Status.CurrentHealth += value;
+        Debug.Log($"HPが{value}増えて{Status.MaxHealth}になった");
+    }
+
+    public void AddAttack(float value) 
+    {
+        Status.AttackPower += (int)value;
+    }
+
+    #endregion
 }
