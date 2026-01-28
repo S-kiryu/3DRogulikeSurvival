@@ -9,7 +9,7 @@ public class Tomatoshot : AttakBase
     public override void Attack() 
     {
 
-        TomatoPool.Instance.Get(transform.position);
-
+        Quaternion rot = Quaternion.LookRotation(transform.forward);
+        TomatoPool.Instance.Get(transform.position, rot);
     }
 }

@@ -25,7 +25,7 @@ public class TomatoPool : MonoBehaviour
     }
 
     // とまとオブジェクトをプールから取得
-    public GameObject Get(Vector3 position)
+    public GameObject Get(Vector3 position, Quaternion rotation)
     {
         GameObject Tomato;
 
@@ -38,7 +38,7 @@ public class TomatoPool : MonoBehaviour
             Tomato = Instantiate(_tomatoPrefab);
         }
 
-        Tomato.transform.position = position;
+        Tomato.transform.SetPositionAndRotation(position, rotation);
         Tomato.SetActive(true);
         return Tomato;
     }
