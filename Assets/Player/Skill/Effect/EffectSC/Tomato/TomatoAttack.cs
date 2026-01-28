@@ -4,6 +4,7 @@ public class TomatoAttack : MonoBehaviour
 {
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _lifeTIme = 10;
+    [SerializeField] private float _damage = 10;
     private float _timer;
 
     private void OnEnable()
@@ -29,6 +30,8 @@ public class TomatoAttack : MonoBehaviour
         {
             //ダメージ処理
             Debug.Log("トマトが当たった！！！");
+            var Enemy = other.GetComponent<EnemyStatus>();
+            Enemy.TakeDamage(_damage);
         }
 
         ReturnToPool();
