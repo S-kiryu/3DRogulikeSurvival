@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 1705801822278885901}
   m_Layer: 0
   m_Name: ChickenEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1064,6 +1064,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
   _statusSettings: {fileID: 11400000, guid: 3b6122ed3f489c543998582deb540c46, type: 2}
   _dropXp: {fileID: 1705801822278885901}
+  _coinReward: 1
+  _scoreReward: 100
 --- !u!114 &1705801822278885901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,7 +1078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4251acc231f39a34383217063fe6149d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropXp
-  xpAmount: 1
   dropRadius: 1
   dropInterval: 0.1
 --- !u!1 &6379720492789601664

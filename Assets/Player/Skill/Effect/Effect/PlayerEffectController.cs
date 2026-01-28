@@ -53,5 +53,6 @@ public enum EffectType
 {
     Katana,
     AreaAttack,
+    Tomato,
 }
 

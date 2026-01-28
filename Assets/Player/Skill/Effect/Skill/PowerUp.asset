@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: PowerUp
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  skillName: aaa
+  skillName: PowerUP
   skillDescription: aaa
   icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
   cooldown: 0

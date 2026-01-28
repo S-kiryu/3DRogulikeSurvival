@@ -29,6 +29,7 @@ public class AreaMove : AttakBase
             var enemy = hit.GetComponentInParent<EnemyStatus>();
             if (enemy == null)
             {
+                // 敵ではない場合はスキップ
                 continue;
             }
 

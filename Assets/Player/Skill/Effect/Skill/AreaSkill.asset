@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: AreaSkill
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  skillName: ooo
+  skillName: Area
   skillDescription: 
   icon: {fileID: 0}
   cooldown: 0

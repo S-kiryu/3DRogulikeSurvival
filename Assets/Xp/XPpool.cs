@@ -7,10 +7,10 @@ public class XPpool : MonoBehaviour
 {
     public static XPpool Instance { get; private set; }
 
-    [SerializeField] private GameObject xpPrefab;
-    [SerializeField] private int poolSize = 100;
+    [SerializeField] private GameObject _xpPrefab;
+    [SerializeField] private int _poolSize = 100;
 
-    private Queue<GameObject> Pool = new Queue<GameObject>();
+    private Queue<GameObject> _pool = new Queue<GameObject>();
 
     // シングルトンの初期化とプールの準備
     private void Awake()
@@ -18,11 +18,11 @@ public class XPpool : MonoBehaviour
         Instance = this;
 
         // プールの初期化
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < _poolSize; i++)
         {
-            GameObject xp = Instantiate(xpPrefab);
+            GameObject xp = Instantiate(_xpPrefab);
             xp.SetActive(false);
-            Pool.Enqueue(xp);
+            _pool.Enqueue(xp);
         }
     }
 
@@ -31,13 +31,13 @@ public class XPpool : MonoBehaviour
     {
         GameObject xp;
 
-        if (Pool.Count > 0)
+        if (_pool.Count > 0)
         {
-            xp = Pool.Dequeue();
+            xp = _pool.Dequeue();
         }
         else
         {
-            xp = Instantiate(xpPrefab);
+            xp = Instantiate(_xpPrefab);
         }
 
         xp.transform.position = position;
@@ -49,6 +49,6 @@ public class XPpool : MonoBehaviour
     public void Return(GameObject xp)
     {
         xp.SetActive(false);
-        Pool.Enqueue(xp);
+        _pool.Enqueue(xp);
     }
 }
