@@ -5,13 +5,30 @@ public class AreaMove : AttakBase
 {
     [SerializeField] private float _coolTime = 1f;
     public override float CoolTime => _coolTime;
-    public override EffectType Type => EffectType.AreaAttack;
 
     [SerializeField] private float _attackRadius = 2f;
+    [SerializeField] private float _attackDamage = 10f;
     [SerializeField] private LayerMask enemyLayer;
 
-    private readonly HashSet<EnemyStatus> hitEnemies = new();
+    public override EffectType Type => EffectType.AreaAttack;
 
+
+    //強化用メソット
+
+    public void AddDamage(float value) 
+    {
+        _attackDamage += value;
+    }
+
+    public void AddRadius() 
+    {
+        _attackRadius += 0.5f;
+    }
+
+    public void ReduceCoolTime(float value)
+    {
+        _coolTime = Mathf.Max(0.1f, _coolTime - value);
+    }
 
     public override void Attack()
     {
@@ -33,7 +50,7 @@ public class AreaMove : AttakBase
                 continue;
             }
 
-            enemy.TakeDamage(_playerStatus.AttackPower / 0.5f);
+            enemy.TakeDamage(_playerStatus.AttackPower / 0.5f+_attackDamage);
             Debug.Log(_playerStatus.AttackPower / 0.5f + "のエリア攻撃");
         }
     }
