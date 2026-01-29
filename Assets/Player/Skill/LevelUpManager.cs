@@ -13,6 +13,8 @@ public class LevelUpManager : MonoBehaviour
     [SerializeField] private float _delayBetweenLevelUps = 0.5f; // レベルアップ間の遅延
 
     private Queue<int> _levelUpQueue = new Queue<int>();
+    //選択されたスキルの保存
+    private HashSet<Skill> _selectedSkills = new HashSet<Skill>();
     private bool _isProcessingLevelUp = false;
     private bool _isPaused = false;
 
@@ -52,10 +54,13 @@ public class LevelUpManager : MonoBehaviour
 
             _levelUpQueue.Dequeue();
 
+            //選択されたスキルに基づいて、まだ選択されていないスキルからランダムに3つ選ぶ
             var skills = _database.skills
+                .Where(s => !_selectedSkills.Contains(s))
                 .OrderBy(x => Random.value)
                 .Take(3)
                 .ToList();
+
 
             // スキル選択を待つ
             bool skillSelected = false;
@@ -82,6 +87,26 @@ public class LevelUpManager : MonoBehaviour
     // スキル選択時の処理
     private void SelectSkill(Skill skill)
     {
+        // 効果適用
         skill.skillEffect.Apply(_player);
+
+        // 選択済みとして登録
+        _selectedSkills.Add(skill);
+
+        // データベースから元スキルを削除
+        _database.skills.Remove(skill);
+
+        // 派生スキルを追加
+        if (skill.upgradeSkills != null)
+        {
+            foreach (var upgrade in skill.upgradeSkills)
+            {
+                // すでに存在していなければ追加
+                if (!_database.skills.Contains(upgrade))
+                {
+                    _database.skills.Add(upgrade);
+                }
+            }
+        }
     }
 }

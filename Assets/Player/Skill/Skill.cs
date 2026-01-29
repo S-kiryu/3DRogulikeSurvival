@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Skill", menuName = "Game/Skill")]
@@ -15,4 +16,6 @@ public class Skill : ScriptableObject
     public GameObject effectPrefab;
 
     public SkillEffect skillEffect;
+
+    public List<Skill> upgradeSkills;
 }
