@@ -1,16 +1,11 @@
 using UnityEngine;
 
-public class AreaUpGrade : MonoBehaviour
+[CreateAssetMenu(fileName = "AreaAttackEffect", menuName = "Game/SkillEffect/AreaAttack/AttackUp")]
+public class AreaUpGrade : SkillEffect
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public override void Apply(PlayerStatus player)
     {
-        
+    
     }
 }
