@@ -15,6 +15,7 @@ public class LevelUpManager : MonoBehaviour
     private Queue<int> _levelUpQueue = new Queue<int>();
     //選択されたスキルの保存
     private HashSet<Skill> _selectedSkills = new HashSet<Skill>();
+    private List<Skill> _runtimeSkills;
     private bool _isProcessingLevelUp = false;
     private bool _isPaused = false;
 
@@ -30,6 +31,12 @@ public class LevelUpManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        // ランタイム用スキルリストの初期化
+        _runtimeSkills = new List<Skill>(_database.skills);
     }
 
     //キューにレベルアップを追加
@@ -55,7 +62,7 @@ public class LevelUpManager : MonoBehaviour
             _levelUpQueue.Dequeue();
 
             //選択されたスキルに基づいて、まだ選択されていないスキルからランダムに3つ選ぶ
-            var skills = _database.skills
+            var skills = _runtimeSkills
                 .Where(s => !_selectedSkills.Contains(s))
                 .OrderBy(x => Random.value)
                 .Take(3)
@@ -93,20 +100,20 @@ public class LevelUpManager : MonoBehaviour
         // 選択済みとして登録
         _selectedSkills.Add(skill);
 
-        // データベースから元スキルを削除
-        _database.skills.Remove(skill);
+        // 実行用リストから削除
+        _runtimeSkills.Remove(skill);
 
-        // 派生スキルを追加
+        // 派生スキルを実行用リストに追加
         if (skill.upgradeSkills != null)
         {
             foreach (var upgrade in skill.upgradeSkills)
             {
-                // すでに存在していなければ追加
-                if (!_database.skills.Contains(upgrade))
+                if (!_runtimeSkills.Contains(upgrade))
                 {
-                    _database.skills.Add(upgrade);
+                    _runtimeSkills.Add(upgrade);
                 }
             }
         }
     }
+
 }

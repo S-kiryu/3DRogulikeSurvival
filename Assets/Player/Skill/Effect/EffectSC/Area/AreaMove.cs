@@ -15,7 +15,7 @@ public class AreaMove : AttakBase
 
     //強化用メソット
 
-    public void AddDamage(float value) 
+    public void AddAttackDamageUp(float value) 
     {
         _attackDamage += value;
     }

@@ -46,6 +46,8 @@ public class SkillButton : MonoBehaviour
         }
         else
         {
+            Debug.LogError(_onSelected);
+            Debug.LogError(_skill);
             Debug.LogError($"[SkillButton] Cannot invoke callback!");
         }
     }
