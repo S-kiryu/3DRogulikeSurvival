@@ -19,8 +19,8 @@ MonoBehaviour:
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: d7606f18783088a47a6c06838d6e2a00, type: 2}
   upgradeSkills:
-  - {fileID: 11400000, guid: 3c6c5abe1432d0544b32a593af7ba84b, type: 2}
-  - {fileID: 11400000, guid: 3c6c5abe1432d0544b32a593af7ba84b, type: 2}
-  - {fileID: 11400000, guid: 3c6c5abe1432d0544b32a593af7ba84b, type: 2}
-  - {fileID: 11400000, guid: 3c6c5abe1432d0544b32a593af7ba84b, type: 2}
-  - {fileID: 11400000, guid: 3c6c5abe1432d0544b32a593af7ba84b, type: 2}
+  - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
+  - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
+  - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
+  - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
+  - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
