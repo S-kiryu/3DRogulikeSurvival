@@ -1,6 +1,5 @@
-using System;
+ï»¿using System;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyStatus : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class EnemyStatus : MonoBehaviour
 
     private void Awake()
     {
-        CurrentHealth = MaxHealth;
+        ResetEnemy();
     }
 
     private void Start()
@@ -28,18 +27,17 @@ public class EnemyStatus : MonoBehaviour
 
         if (_scoreManager == null)
         {
-            Debug.LogError("ScoreManager.instance ‚ª null ‚Å‚·");
+            Debug.LogError("ScoreManager.instance ãŒ null ã§ã™");
         }
     }
 
     /// <summary>
-    /// ƒ_ƒ[ƒW‚ğó‚¯‚é
+    /// ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ã‚‹
     /// </summary>
-    /// <param name="damage"></param>
     public void TakeDamage(float damage)
     {
         CurrentHealth -= damage;
-        Debug.Log(damage + "‚Ìƒ_ƒ[ƒW‚ğó‚¯‚½");
+        Debug.Log(damage + "ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãŸ");
 
         if (CurrentHealth <= 0)
         {
@@ -49,29 +47,20 @@ public class EnemyStatus : MonoBehaviour
 
     private void Die()
     {
-        // ƒXƒRƒA‰ÁZ
-        if (_scoreManager != null)
-        {
-            _scoreManager.ScoreUP(_scoreReward);
-        }
-
-        // ƒRƒCƒ“‰ÁZ
-        if (PlayerStatusManager.Instance != null)
-        {
-            PlayerStatusManager.Instance.AddMoney(_coinReward);
-            Debug.Log($"{_coinReward}ƒRƒCƒ“Šl“¾I");
-        }
-        else
-        {
-            Debug.LogError("PlayerStatusManager.Instance ‚ª null ‚Å‚·");
-        }
-
-        // XPƒhƒƒbƒv
-        _dropXp.Drop();
-
-        Debug.Log("“G‚ª“|‚³‚ê‚½I");
-
         OnDead?.Invoke();
-        Destroy(gameObject);
+
+        EnemyPoolManager.Instance.Return(
+            GetComponent<EnemyIdentity>().Type,
+            gameObject
+        );
+    }
+
+
+    /// <summary>
+    /// Poolå†åˆ©ç”¨ç”¨ã®ãƒªã‚»ãƒƒãƒˆå‡¦ç†
+    /// </summary>
+    public void ResetEnemy()
+    {
+        CurrentHealth = MaxHealth;
     }
 }

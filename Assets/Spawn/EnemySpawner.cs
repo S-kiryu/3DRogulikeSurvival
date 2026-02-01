@@ -19,8 +19,26 @@ public class EnemySpawner : MonoBehaviour
     private int _aliveEnemyCount = 0;
     private int _lastSpawnIndex = -1;
 
+    public enum EnemyType
+    {
+        Slime,
+        Bat,
+        Goblin
+    }
+
+
     private void Start()
     {
+        Debug.Log("EnemySpawner Start");
+
+        if (_waves == null)
+        {
+            Debug.LogError("_waves が null です");
+            return;
+        }
+
+        Debug.Log($"Wave数: {_waves.Length}");
+
         StartCoroutine(WaveLoop());
     }
 
@@ -32,9 +50,20 @@ public class EnemySpawner : MonoBehaviour
         while (_currentWaveIndex < _waves.Length)
         {
             WaveData wave = _waves[_currentWaveIndex];
+
+            Debug.Log(
+                $"Wave[{_currentWaveIndex}] : " +
+                $"wave is null = {wave == null}"
+            );
+
+            Debug.Log(
+                $"Enemies null = {wave.Enemies == null}, " +
+                $"Length = {(wave.Enemies == null ? -1 : wave.Enemies.Length)}"
+            );
+
             Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
 
-            // ★ Wave が終わるまで待つ
+            //Wave が終わるまで待つ
             yield return StartCoroutine(PlayWave(wave));
 
 
@@ -53,15 +82,36 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     private IEnumerator PlayWave(WaveData wave)
     {
+        if (wave == null)
+        {
+            Debug.LogError("PlayWave: wave が null");
+            yield break;
+        }
+
+        if (wave.Enemies == null || wave.Enemies.Length == 0)
+        {
+            Debug.LogError("PlayWave: Enemies が null または空です");
+            yield break;
+        }
+
+        Debug.Log($"PlayWave 開始: Enemies数 = {wave.Enemies.Length}");
+
+
         var spawnList = new List<EnemySpawnData>();
 
         foreach (var enemyData in wave.Enemies)
         {
+            Debug.Log(
+                $"EnemyData: Type={enemyData.Type}, " +
+                $"Count={enemyData.SpawnCount}"
+            );
+
             for (int i = 0; i < enemyData.SpawnCount; i++)
             {
                 spawnList.Add(enemyData);
             }
         }
+
 
         while (spawnList.Count > 0)
         {
@@ -82,20 +132,31 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     private void SpawnEnemy(EnemySpawnData enemyData)
     {
+        Debug.Log($"SpawnEnemy: {enemyData.Type}");
+
+        if (EnemyPoolManager.Instance == null)
+        {
+            Debug.LogError("EnemyPoolManager.Instance が null");
+            return;
+        }
+
         Transform spawnPoint = GetRandomSpawnPoint();
 
-        GameObject enemy = Instantiate(enemyData.EnemyPrefab,
-                    spawnPoint.position,
-                    Quaternion.identity);
+        GameObject enemy = EnemyPoolManager.Instance
+    .Get(enemyData.Type, spawnPoint.position);
+
 
         _aliveEnemyCount++;
 
         var status = enemy.GetComponent<EnemyStatus>();
         if (status != null)
         {
+            status.OnDead -= OnEnemyDead;
             status.OnDead += OnEnemyDead;
         }
     }
+
+
 
     private void OnEnemyDead()
     {

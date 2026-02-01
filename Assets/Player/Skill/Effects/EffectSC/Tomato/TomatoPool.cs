@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class TomatoPool : MonoBehaviour
@@ -10,43 +10,51 @@ public class TomatoPool : MonoBehaviour
 
     private Queue<GameObject> _pool = new Queue<GameObject>();
 
-    // ƒVƒ“ƒOƒ‹ƒgƒ“‚Ì‰Šú‰»‚Æƒv[ƒ‹‚Ì€”õ
+    // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³ã®åˆæœŸåŒ–ã¨ãƒ—ãƒ¼ãƒ«ã®æº–å‚™
     private void Awake()
     {
         Instance = this;
 
-        // ƒv[ƒ‹‚Ì‰Šú‰»
+        // ãƒ—ãƒ¼ãƒ«ã®åˆæœŸåŒ–
         for (int i = 0; i < _poolSize; i++)
         {
-            GameObject Tomato = Instantiate(_tomatoPrefab);
-            Tomato.SetActive(false);
-            _pool.Enqueue(Tomato);
+            GameObject tomato = Instantiate(_tomatoPrefab);
+            tomato.SetActive(false);
+            _pool.Enqueue(tomato);
         }
     }
 
-    // ‚Æ‚Ü‚ÆƒIƒuƒWƒFƒNƒg‚ğƒv[ƒ‹‚©‚çæ“¾
+    // ã¨ã¾ã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ¼ãƒ«ã‹ã‚‰å–å¾—
     public GameObject Get(Vector3 position, Quaternion rotation)
     {
-        GameObject Tomato;
+        GameObject tomato;
 
         if (_pool.Count > 0)
         {
-            Tomato = _pool.Dequeue();
+            tomato = _pool.Dequeue();
         }
         else
         {
-            Tomato = Instantiate(_tomatoPrefab);
+            tomato = Instantiate(_tomatoPrefab);
         }
 
-        Tomato.transform.SetPositionAndRotation(position, rotation);
-        Tomato.SetActive(true);
-        return Tomato;
+        tomato.transform.SetPositionAndRotation(position, rotation);
+        tomato.SetActive(true);
+
+        return tomato;
     }
 
-    // ‚Æ‚Ü‚ÆƒIƒuƒWƒFƒNƒg‚ğƒv[ƒ‹‚É–ß‚·
-    public void Return(GameObject Tomato)
+    // ã¨ã¾ã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ¼ãƒ«ã«æˆ»ã™ï¼ˆâ˜…ã“ã“ãŒå¤‰æ›´ç‚¹ï¼‰
+    public void Return(GameObject tomato)
     {
-        Tomato.SetActive(false);
-        _pool.Enqueue(Tomato);
+        // ğŸ”½ çŠ¶æ…‹ãƒªã‚»ãƒƒãƒˆï¼ˆPoolå†åˆ©ç”¨ã®å®‰å…¨è£…ç½®ï¼‰
+        var attack = tomato.GetComponent<TomatoAttack>();
+        if (attack != null)
+        {
+            attack.ResetState();
+        }
+
+        tomato.SetActive(false);
+        _pool.Enqueue(tomato);
     }
 }

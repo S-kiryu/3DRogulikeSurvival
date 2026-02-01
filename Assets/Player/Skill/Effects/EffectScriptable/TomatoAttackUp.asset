@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2af63ca5b58c143bffdd94c208034c, type: 3}
-  m_Name: AreaAttackUp
-  m_EditorClassIdentifier: Assembly-CSharp::AreaUpGrade
+  m_Script: {fileID: 11500000, guid: 1c7a42fc8b2940745a1ec767b47d9181, type: 3}
+  m_Name: TomatoAttackUp
+  m_EditorClassIdentifier: Assembly-CSharp::TomatoAttackUp
   _attackDamageUp: 100

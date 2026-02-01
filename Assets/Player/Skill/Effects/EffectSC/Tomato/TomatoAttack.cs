@@ -1,15 +1,24 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class TomatoAttack : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private float _lifeTIme = 10;
-    [SerializeField] private float _damage = 10;
+    private float _speed;
+    private float _lifeTIme;
+    private float _damage;
     private float _timer;
 
-    private void OnEnable()
+    public void ResetState()
     {
-        _timer = 0;
+        _timer = 0f;
+    }
+
+    // åˆæœŸåŒ–ãƒ¡ã‚½ãƒƒãƒ‰
+    public void Initialize(float damage, float speed, float lifeTime)
+    {
+        _damage = damage;
+        _speed = speed;
+        _lifeTIme = lifeTime;
+        _timer = 0f;
     }
 
     void Update()
@@ -17,28 +26,32 @@ public class TomatoAttack : MonoBehaviour
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
 
         _timer += Time.deltaTime;
-        if (_timer >= _lifeTIme) 
+        if (_timer >= _lifeTIme)
         {
             ReturnToPool();
         }
     }
 
+    // è¡çªå‡¦ç†
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("‰½‚©‚Éƒgƒ}ƒg‚ª“–‚½‚Á‚½");
-        if(other.CompareTag("Enemy")) 
+        if (other.CompareTag("Enemy"))
         {
-            //ƒ_ƒ[ƒWˆ—
-            Debug.Log("ƒgƒ}ƒg‚ª“–‚½‚Á‚½III");
-            var Enemy = other.GetComponent<EnemyStatus>();
-            Enemy.TakeDamage(_damage);
+            var enemy = other.GetComponent<EnemyStatus>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(_damage);
+                Debug.Log("ãƒˆãƒãƒˆã®æ”»æ’ƒãŒãƒ’ãƒƒãƒˆï¼ãƒ€ãƒ¡ãƒ¼ã‚¸: " + _damage);
+            }
         }
 
         ReturnToPool();
     }
 
+    // ãƒ—ãƒ¼ãƒ«ã«æˆ»ã™ãƒ¡ã‚½ãƒƒãƒ‰
     private void ReturnToPool()
     {
         TomatoPool.Instance.Return(gameObject);
     }
+
 }
