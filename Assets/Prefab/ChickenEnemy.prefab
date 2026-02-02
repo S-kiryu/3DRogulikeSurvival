@@ -975,6 +975,7 @@ GameObject:
   - component: {fileID: 4761208676445937763}
   - component: {fileID: 1705801822278885901}
   - component: {fileID: -5572101120445910808}
+  - component: {fileID: -3789055341144175710}
   m_Layer: 0
   m_Name: ChickenEnemy
   m_TagString: Enemy
@@ -1103,6 +1104,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3789055341144175710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210767164444615586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2ccc85b04888948bdebe95b554a5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyIdentity
+  Type: 0
 --- !u!1 &6379720492789601664
 GameObject:
   m_ObjectHideFlags: 0

@@ -1482,6 +1482,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &514770021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514770023}
+  - component: {fileID: 514770022}
+  m_Layer: 0
+  m_Name: NecoPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &514770022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514770021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55dba83da6549e14cac044e7ca1ac2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
+  enemyPrefab: {fileID: 6956889387109355156, guid: 2cbd89f84912884469029a937ce7e876, type: 3}
+  initialCount: 30
+--- !u!4 &514770023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514770021}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.76116, y: -0, z: 14.56248}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591494320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 840977364}
   - component: {fileID: 840977363}
+  - component: {fileID: 840977365}
   m_Layer: 0
   m_Name: EnemyIdentity
   m_TagString: Untagged
@@ -1753,6 +1800,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840977365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840977362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2ccc85b04888948bdebe95b554a5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyIdentity
+  Type: 1
 --- !u!1 &989228146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2995,6 +3055,8 @@ MonoBehaviour:
   pools:
   - type: 0
     pool: {fileID: 1614034966}
+  - type: 1
+    pool: {fileID: 514770022}
 --- !u!4 &1541923782
 Transform:
   m_ObjectHideFlags: 0
@@ -4191,3 +4253,4 @@ SceneRoots:
   - {fileID: 840977364}
   - {fileID: 1541923782}
   - {fileID: 1614034965}
+  - {fileID: 514770023}

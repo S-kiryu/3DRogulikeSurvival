@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: New Wave Data
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   Enemies:
-  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+  - Type: 0
     SpawnCount: 5
-  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+  - Type: 0
     SpawnCount: 1
-  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+  - Type: 0
     SpawnCount: 2
-  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+  - Type: 1
     SpawnCount: 2
-  - EnemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+  - Type: 1
+    SpawnCount: 1
+  - Type: 0
     SpawnCount: 1

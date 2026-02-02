@@ -47,10 +47,23 @@ public class EnemyStatus : MonoBehaviour
 
     private void Die()
     {
+        if (EnemyPoolManager.Instance == null)
+        {
+            Debug.LogError("EnemyPoolManager.Instance が null");
+            return;
+        }
+
+        var identity = GetComponent<EnemyIdentity>();
+        if (identity == null)
+        {
+            Debug.LogError("EnemyIdentity が null");
+            return;
+        }
+
         OnDead?.Invoke();
 
         EnemyPoolManager.Instance.Return(
-            GetComponent<EnemyIdentity>().Type,
+            identity.Type,
             gameObject
         );
     }
