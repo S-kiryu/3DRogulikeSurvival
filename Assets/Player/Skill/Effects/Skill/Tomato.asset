@@ -18,3 +18,8 @@ MonoBehaviour:
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 9d4156c736e13a34abdca38f765b3520, type: 2}
+  upgradeSkills:
+  - {fileID: 11400000, guid: bc83f69b5d04fee4ab97954434cf1f9b, type: 2}
+  - {fileID: 11400000, guid: bc83f69b5d04fee4ab97954434cf1f9b, type: 2}
+  - {fileID: 11400000, guid: bc83f69b5d04fee4ab97954434cf1f9b, type: 2}
+  - {fileID: 11400000, guid: bc83f69b5d04fee4ab97954434cf1f9b, type: 2}

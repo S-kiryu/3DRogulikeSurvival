@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c7a42fc8b2940745a1ec767b47d9181, type: 3}
   m_Name: TomatoAttackUp
   m_EditorClassIdentifier: Assembly-CSharp::TomatoAttackUp
-  _attackDamageUp: 100
+  _attackDamageUp: 10

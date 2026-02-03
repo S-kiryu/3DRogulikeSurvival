@@ -47,6 +47,9 @@ public class EnemyStatus : MonoBehaviour
 
     private void Die()
     {
+        // XPドロップ
+        _dropXp.Drop();
+
         if (EnemyPoolManager.Instance == null)
         {
             Debug.LogError("EnemyPoolManager.Instance が null");
@@ -61,6 +64,8 @@ public class EnemyStatus : MonoBehaviour
         }
 
         OnDead?.Invoke();
+
+
 
         EnemyPoolManager.Instance.Return(
             identity.Type,

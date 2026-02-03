@@ -22,13 +22,26 @@ public class DropXp : MonoBehaviour
         for (int i = 0; i < xpAmount; i++)
         {
             Vector2 randomOffset = Random.insideUnitCircle * dropRadius;
-            Vector3 dropPosition = transform.position
-                + new Vector3(randomOffset.x, randomOffset.y, 0f);
 
-            XPpool.Instance.Get(dropPosition);
+            // ­‚µã‹ó‚©‚çRay‚ð”ò‚Î‚·
+            Vector3 rayStartPos = transform.position
+                + new Vector3(randomOffset.x, 5f, randomOffset.y);
 
-            // ­‚µ‘Ò‚Â
+            Ray ray = new Ray(rayStartPos, Vector3.down);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 10f, LayerMask.GetMask("Ground")))
+            {
+                Vector3 dropPosition = hit.point;
+
+                // ­‚µ•‚‚©‚¹‚½‚¢ê‡i–„‚Ü‚è–hŽ~j
+                dropPosition += Vector3.up * 0.05f;
+
+                XPpool.Instance.Get(dropPosition);
+            }
+
             yield return new WaitForSeconds(dropInterval);
         }
     }
+
 }
