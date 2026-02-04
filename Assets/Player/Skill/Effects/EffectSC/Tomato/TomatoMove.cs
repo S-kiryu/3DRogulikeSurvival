@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Tomatoshot : AttakBase
+public class Tomatoshot : AttackBase
 {
     [SerializeField] private float _coolTime = 0.5f;
 

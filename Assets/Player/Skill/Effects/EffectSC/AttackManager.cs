@@ -11,7 +11,7 @@ public class AttackManager : MonoBehaviour
     void Start()
     {
         // Å‰‚É‘S•”W‚ß‚é
-        foreach (var attack in FindObjectsByType<AttakBase>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        foreach (var attack in FindObjectsByType<AttackBase>(FindObjectsInactive.Include, FindObjectsSortMode.None))
         {
             attacks.Add(attack);
             timers[attack] = 0f;

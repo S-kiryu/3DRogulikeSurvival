@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class KatanaMove : AttakBase
+public class KatanaSpawner : MonoBehaviour
 {
-    [SerializeField] private float _coolTime = 1f;
-    public override float CoolTime => _coolTime;
+    [SerializeField] private float _coolTime = 0.1f;
 
-    public override EffectType Type => EffectType.Katana;
-
-    public override void Attack() 
+    public void Attack() 
     {
 
     }
