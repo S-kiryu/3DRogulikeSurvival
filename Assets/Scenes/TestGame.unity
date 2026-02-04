@@ -2307,6 +2307,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 988816230}
+  - component: {fileID: 988816231}
   m_Layer: 0
   m_Name: knifeSpawner
   m_TagString: Untagged
@@ -2329,6 +2330,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1788893953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &988816231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988816229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76406e1eb9567bf4082e66fd70db4765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KnifeManager
+  bladePrefab: {fileID: 8152877437649625219, guid: 0314674cdee9c404f9599b17a2d1a658, type: 3}
+  radius: 2
+  rotateSpeed: 180
 --- !u!1 &989228146
 GameObject:
   m_ObjectHideFlags: 0
@@ -6077,6 +6093,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6023797740975607207, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+      propertyPath: _KnaifeOrbit
+      value: 
+      objectReference: {fileID: 988816231}
+    - target: {fileID: 6023797740975607207, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       propertyPath: _levelUpManager
       value: 
       objectReference: {fileID: 249746270}
@@ -6131,6 +6151,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2453437281126367802, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+    - {fileID: -4585507456334696977, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8805895845479349422, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       insertIndex: -1

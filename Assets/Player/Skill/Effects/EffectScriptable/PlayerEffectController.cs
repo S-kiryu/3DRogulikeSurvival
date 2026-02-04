@@ -51,7 +51,7 @@ public class PlayerEffectController : MonoBehaviour
 }
 public enum EffectType
 {
-    Katana,
+    KnifeDamage,
     AreaAttack,
     Tomato,
 }

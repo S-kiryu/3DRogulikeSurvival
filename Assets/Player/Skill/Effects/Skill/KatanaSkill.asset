@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: KatanaSkill
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   skillName: katana
-  skillDescription: aaa
+  skillDescription: 
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 481d33f9743f3ce4aa2fc11823eeed25, type: 2}
-  upgradeSkills: []
+  upgradeSkills:
+  - {fileID: 11400000}

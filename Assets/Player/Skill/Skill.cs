@@ -4,6 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Skill", menuName = "Game/Skill")]
 public class Skill : ScriptableObject
 {
+    [SerializeField] private int id;
+    public int ID => id;
+
     //Skill‚Ì–¼‘O
     public string skillName;
     //Skill‚Ìà–¾
@@ -18,4 +21,15 @@ public class Skill : ScriptableObject
     public SkillEffect skillEffect;
 
     public List<Skill> upgradeSkills;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        // ID‚ª‚Ü‚¾İ’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎGUID‚©‚ç©“®¶¬
+        if (id == 0)
+        {
+            id = name.GetHashCode();
+        }
+    }
+#endif
 }

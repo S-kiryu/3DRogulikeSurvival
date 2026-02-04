@@ -8,6 +8,9 @@ public class PlayerStatus : MonoBehaviour
     public PlayerEffectController effectController;
     public event Action OnGameClear;
     public event Action OnDead;
+    [SerializeField] private KnifeManager _KnaifeOrbit;
+
+    public KnifeManager KnaifeOrbit => _KnaifeOrbit;
 
     private void Awake()
     {
