@@ -97,6 +97,14 @@ public class LevelUpManager : MonoBehaviour
     // スキル選択時の処理
     private void SelectSkill(Skill skill)
     {
+        //二重選択防止
+        if (_selectedSkillIds.Contains(skill.ID))
+        {
+            return;
+        }
+
+        _selectedSkillIds.Add(skill.ID);
+
         // 効果適用
         skill.skillEffect.Apply(_player);
 

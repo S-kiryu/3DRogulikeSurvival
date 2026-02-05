@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: PowerUp
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  id: -76606366
   skillName: PowerUP
   skillDescription: 
   icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
@@ -19,3 +20,4 @@ MonoBehaviour:
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: ea6095c9c759edd45924d4444252f439, type: 2}
   upgradeSkills: []
+  count: 1

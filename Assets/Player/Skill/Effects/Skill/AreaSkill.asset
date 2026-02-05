@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: AreaSkill
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  id: -1991004820
   skillName: Area
   skillDescription: 
   icon: {fileID: 0}
@@ -24,3 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
   - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
   - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
+  count: 1
