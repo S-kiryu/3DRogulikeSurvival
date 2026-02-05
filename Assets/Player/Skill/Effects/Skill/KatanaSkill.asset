@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: KatanaSkill
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  id: -2130837199
   skillName: katana
   skillDescription: 
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 481d33f9743f3ce4aa2fc11823eeed25, type: 2}
-  upgradeSkills:
-  - {fileID: 11400000}
+  upgradeSkills: []
+  count: 10

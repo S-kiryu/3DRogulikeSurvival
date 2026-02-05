@@ -16,6 +16,9 @@ public class LevelUpManager : MonoBehaviour
     //選択されたスキルの保存
     private HashSet<Skill> _selectedSkills = new HashSet<Skill>();
     private List<Skill> _runtimeSkills;
+    private HashSet<int> _selectedSkillIds = new HashSet<int>();
+    private Dictionary<int, int> _skillSelectCount = new Dictionary<int, int>();
+
     private bool _isProcessingLevelUp = false;
     private bool _isPaused = false;
 
@@ -97,11 +100,14 @@ public class LevelUpManager : MonoBehaviour
         // 効果適用
         skill.skillEffect.Apply(_player);
 
-        // 選択済みとして登録
-        _selectedSkills.Add(skill);
+        // 個数を1減らす
+        skill.count--;
 
-        // 実行用リストから削除
-        _runtimeSkills.Remove(skill);
+        // 個数が0になったら選択肢から削除
+        if (skill.count <= 0)
+        {
+            _runtimeSkills.Remove(skill);
+        }
 
         // 派生スキルを実行用リストに追加
         if (skill.upgradeSkills != null)

@@ -22,11 +22,13 @@ public class Skill : ScriptableObject
 
     public List<Skill> upgradeSkills;
 
+    public int count = 1;
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
         // ID‚ª‚Ü‚¾İ’è‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎGUID‚©‚ç©“®¶¬
-        if (id == 0)
+        if (ID == 0)
         {
             id = name.GetHashCode();
         }
