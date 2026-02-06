@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Wave Data
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   Enemies:
-  - Type: 0
+  - Type: 2
     SpawnCount: 5
   - Type: 0
     SpawnCount: 1
@@ -23,5 +23,5 @@ MonoBehaviour:
     SpawnCount: 2
   - Type: 1
     SpawnCount: 1
-  - Type: 0
+  - Type: 2
     SpawnCount: 1
