@@ -1196,6 +1196,7 @@ GameObject:
   - component: {fileID: 3639270550211422665}
   - component: {fileID: 1640244025181950954}
   - component: {fileID: -4472076026705814447}
+  - component: {fileID: 1226864107726969061}
   m_Layer: 0
   m_Name: Kitty_001
   m_TagString: Enemy
@@ -1256,7 +1257,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayerAction
   cost: 1
   player: {fileID: 0}
-  moveSpeed: 3
   stopDistance: 1.5
 --- !u!114 &8352188750273593707
 MonoBehaviour:
@@ -1315,6 +1315,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyIdentity
   Type: 1
+--- !u!195 &1226864107726969061
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6956889387109355156}
+  m_Enabled: 1
+  m_AgentTypeID: -334000983
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7006703883147717712
 GameObject:
   m_ObjectHideFlags: 0
