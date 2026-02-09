@@ -97,27 +97,18 @@ public class LevelUpManager : MonoBehaviour
     // スキル選択時の処理
     private void SelectSkill(Skill skill)
     {
-        //二重選択防止
-        if (_selectedSkillIds.Contains(skill.ID))
-        {
-            return;
-        }
-
-        _selectedSkillIds.Add(skill.ID);
-
-        // 効果適用
+        // 効果適用（毎回）
         skill.skillEffect.Apply(_player);
 
-        // 個数を1減らす
+        // 残り回数を減らす
         skill.count--;
 
-        // 個数が0になったら選択肢から削除
         if (skill.count <= 0)
         {
             _runtimeSkills.Remove(skill);
         }
 
-        // 派生スキルを実行用リストに追加
+        // 派生スキル追加
         if (skill.upgradeSkills != null)
         {
             foreach (var upgrade in skill.upgradeSkills)
@@ -129,5 +120,6 @@ public class LevelUpManager : MonoBehaviour
             }
         }
     }
+
 
 }

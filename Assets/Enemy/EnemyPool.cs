@@ -3,22 +3,24 @@ using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private int initialCount = 30;
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private int _initialCount = 30;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
+
     private void Awake()
     {
-        for (int i = 0; i < initialCount; i++)
+        for (int i = 0; i < _initialCount; i++)
         {
             Create();
         }
     }
 
+    //生成
     private GameObject Create()
     {
-        var obj = Instantiate(enemyPrefab);
+        var obj = Instantiate(_enemyPrefab);
         obj.SetActive(false);
         pool.Enqueue(obj);
         return obj;

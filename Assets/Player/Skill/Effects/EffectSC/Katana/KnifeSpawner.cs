@@ -1,19 +1,17 @@
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class KnifeManager : MonoBehaviour
 {
     [SerializeField] private GameObject bladePrefab;
     [SerializeField] private float radius = 2f;
-    //ナイフの回転速度
     [SerializeField] private float rotateSpeed = 180f;
 
-    private int bladeQuaternion = 180;
-    private List<GameObject> blades = new List<GameObject>();
+    private readonly List<GameObject> blades = new();
 
     private void Update()
     {
+        // 親だけを回す
         transform.Rotate(Vector3.up, rotateSpeed * Time.deltaTime);
     }
 
@@ -21,7 +19,6 @@ public class KnifeManager : MonoBehaviour
     {
         for (int i = 0; i < addCount; i++)
         {
-            Debug.Log(addCount + "本刀を追加");
             CreateBlade();
         }
         RepositionBlades();
@@ -30,25 +27,28 @@ public class KnifeManager : MonoBehaviour
     private void CreateBlade()
     {
         GameObject blade = Instantiate(bladePrefab, transform);
-        Debug.Log("刀をスポーン");
-
-
-        if(blades.Count %2 ==0)
-            blade.transform.localRotation = Quaternion.Euler(0,180, 0);
-
         blades.Add(blade);
     }
 
-    // 円形に均等再配置
+    // 円形に均等配置 + 外向き回転
     private void RepositionBlades()
     {
         int count = blades.Count;
+        if (count == 0) return;
 
         for (int i = 0; i < count; i++)
         {
             float angle = i * (360f / count);
-            Vector3 offset = Quaternion.Euler(0, angle, 0) * Vector3.forward * radius;
+
+            // 円周上の位置
+            Vector3 offset =
+                Quaternion.Euler(0, angle, 0) * Vector3.forward * radius;
+
             blades[i].transform.localPosition = offset;
+
+            //外側を向かせる
+            blades[i].transform.localRotation =
+                Quaternion.LookRotation(-offset.normalized, Vector3.up);
         }
     }
 }

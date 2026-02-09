@@ -12,6 +12,8 @@ public class PlayerStatus : MonoBehaviour
 
     public KnifeManager KnaifeOrbit => _KnaifeOrbit;
 
+    public event Action<int, int> OnHpChanged;
+
     private void Awake()
     {
         _status = PlayerStatusManager.Instance.Status;
@@ -27,6 +29,12 @@ public class PlayerStatus : MonoBehaviour
     {
         _status.CurrentHealth -= amount;
         _status.CurrentHealth = Mathf.Max(_status.CurrentHealth, 0);
+
+        //HP•ÏX’Ê’m
+        OnHpChanged?.Invoke(
+            _status.CurrentHealth,
+            _status.MaxHealth
+        );
 
         Debug.Log($"Player HP: {_status.CurrentHealth}");
 
