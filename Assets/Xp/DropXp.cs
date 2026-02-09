@@ -30,7 +30,7 @@ public class DropXp : MonoBehaviour
             Ray ray = new Ray(rayStartPos, Vector3.down);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 10f, LayerMask.GetMask("Ground")))
+            if (Physics.Raycast(ray, out hit, 10f, LayerMask.GetMask("jimen")))
             {
                 Vector3 dropPosition = hit.point;
 

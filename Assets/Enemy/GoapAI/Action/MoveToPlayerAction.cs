@@ -13,31 +13,31 @@ public class MoveToPlayerAction : GoapAction
 
     private void Awake()
     {
-        Preconditions = new Dictionary<string, bool> {
+        Preconditions = new Dictionary<string, bool>
+        {
             { "PlayerVisible", true }
         };
-        Effects = new Dictionary<string, bool> {
+
+        Effects = new Dictionary<string, bool>
+        {
             { "IsNearPlayer", true }
         };
     }
 
     private void Start()
     {
-        // NavMeshAgent を取得（なければ追加）
         _navMeshAgent = GetComponent<NavMeshAgent>();
         if (_navMeshAgent == null)
         {
             _navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
         }
 
-        // Rigidbody を取得（移動と回転の制御用）
         _rigidbody = GetComponent<Rigidbody>();
         if (_rigidbody != null)
         {
-            _rigidbody.isKinematic = true;  // NavMesh が制御するため KinematicRigidbody に
+            _rigidbody.isKinematic = true;
         }
 
-        // プレイヤーを自動取得
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -47,138 +47,76 @@ public class MoveToPlayerAction : GoapAction
             }
         }
 
-        // PlayerStatus を取得
         if (player != null)
         {
             _playerStatus = player.GetComponent<PlayerStatus>();
         }
 
-        // NavMeshAgent の基本設定
-        if (_navMeshAgent != null)
-        {
-            _navMeshAgent.updateRotation = false;  // 回転は手動で行う
-            _navMeshAgent.updatePosition = true;   // 位置は NavMesh に制御させる
-        }
+        // ★ NavMeshAgent 設定
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updatePosition = true;
+        _navMeshAgent.stoppingDistance = stopDistance;
     }
 
     public override bool CheckCanExecute()
     {
-        if (player == null)
-        {
-            Debug.LogWarning("MoveToPlayerAction: player is not assigned");
-            return false;
-        }
-
-        if (_playerStatus == null)
-        {
-            Debug.LogWarning("MoveToPlayerAction: PlayerStatus not found");
-            return false;
-        }
-
-        if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh)
-        {
-            Debug.LogWarning("MoveToPlayerAction: NavMeshAgent is not on NavMesh");
-            return false;
-        }
-
+        if (player == null) return false;
+        if (_playerStatus == null) return false;
+        if (_navMeshAgent == null || !_navMeshAgent.isOnNavMesh) return false;
         return true;
     }
 
     public override bool ExecuteAction()
     {
-        // レベルアップ中は停止
-        if (LevelUpManager.Instance != null && LevelUpManager.Instance.IsPaused == true)
+        // ポーズ中
+        if (LevelUpManager.Instance != null && LevelUpManager.Instance.IsPaused)
         {
-            if (_navMeshAgent.hasPath)
-            {
-                _navMeshAgent.velocity = Vector3.zero;
-            }
+            StopAgent();
             return false;
         }
 
-        // プレイヤーが死んでいたら終了
+        // プレイヤー死亡
         if (!IsPlayerAlive())
         {
-            if (_navMeshAgent.hasPath)
-            {
-                _navMeshAgent.velocity = Vector3.zero;
-            }
+            StopAgent();
             return true;
         }
 
-        // プレイヤーとの距離
-        float distance = Vector3.Distance(transform.position, player.position);
-
-        // プレイヤー方向に向く
+        // プレイヤー方向を向く
         Vector3 lookDir = player.position - transform.position;
         lookDir.y = 0f;
 
-        if (lookDir != Vector3.zero)
+        if (lookDir.sqrMagnitude > 0.001f)
         {
             transform.rotation = Quaternion.Lerp(
                 transform.rotation,
                 Quaternion.LookRotation(lookDir),
-                Time.deltaTime * 5f  // 滑らかに回転
+                Time.deltaTime * 5f
             );
         }
 
-        // stopDistance より遠ければ移動
-        if (distance > stopDistance)
-        {
-            // プレイヤーへの経路を設定
-            if (_navMeshAgent.SetDestination(player.position))
-            {
-                // 経路設定成功
-                _navMeshAgent.isStopped = false;
-                return false;  // 追跡中
-            }
-            else
-            {
-                // 経路設定失敗（プレイヤーが NavMesh 外など）
-                Debug.LogWarning("Could not set destination for NavMeshAgent");
-                _navMeshAgent.isStopped = true;
-                return false;
-            }
-        }
-        else
-        {
-            // プレイヤーに到達
-            _navMeshAgent.isStopped = true;
-            _navMeshAgent.velocity = Vector3.zero;
-            return false;  // 追尾継続（到達後も追跡）
-        }
+        // ★ 毎フレーム目的地を更新するだけ
+        _navMeshAgent.isStopped = false;
+        _navMeshAgent.SetDestination(player.position);
+
+        return false;
+    }
+
+    private void StopAgent()
+    {
+        if (_navMeshAgent == null) return;
+
+        _navMeshAgent.isStopped = true;
+        _navMeshAgent.ResetPath();
     }
 
     private bool IsPlayerAlive()
     {
-        if (_playerStatus == null)
-        {
-            Debug.LogWarning("PlayerStatus is null in IsPlayerAlive");
-            return false;
-        }
-        return _playerStatus.IsAlive;
-    }
-
-    /// <summary>
-    /// NavMeshAgent の設定をカスタマイズ
-    /// </summary>
-    public void ConfigureNavMeshAgent(float speed, float stoppingDistance, float acceleration)
-    {
-        if (_navMeshAgent != null)
-        {
-            _navMeshAgent.speed = speed;
-            _navMeshAgent.stoppingDistance = stoppingDistance;
-            _navMeshAgent.acceleration = acceleration;
-        }
+        return _playerStatus != null && _playerStatus.IsAlive;
     }
 
     private void OnDisable()
     {
-        // 敵が無効化されたら移動停止
-        if (_navMeshAgent != null && _navMeshAgent.isOnNavMesh)
-        {
-            _navMeshAgent.velocity = Vector3.zero;
-            _navMeshAgent.isStopped = true;
-        }
+        StopAgent();
     }
 }
