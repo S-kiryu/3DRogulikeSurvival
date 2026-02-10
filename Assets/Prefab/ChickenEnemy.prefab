@@ -969,9 +969,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1915304541624293912}
-  - component: {fileID: 7369086880652890784}
-  - component: {fileID: 3341109982462049178}
   - component: {fileID: 8692698176879979721}
+  - component: {fileID: -4180142275311920168}
   - component: {fileID: 4761208676445937763}
   - component: {fileID: 1705801822278885901}
   - component: {fileID: -5572101120445910808}
@@ -1002,35 +1001,6 @@ Transform:
   - {fileID: 8284127583163402859}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7369086880652890784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6210767164444615586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec94c774cab1577449fdfc9592869a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayerAction
-  cost: 1
-  player: {fileID: 0}
-  stopDistance: 1.5
---- !u!114 &3341109982462049178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6210767164444615586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e65cca8f37eb7a4c95bac7431a54da0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoapAgent
-  actions:
-  - {fileID: 7369086880652890784}
 --- !u!65 &8692698176879979721
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1052,6 +1022,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.19, y: 0.4, z: 0.38}
   m_Center: {x: 0, y: 0.2, z: 0.01}
+--- !u!114 &-4180142275311920168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210767164444615586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163f3e1f3d0d23b47b07745a9ae0d66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  stopDistance: 1.5
+  updateInterval: 1
 --- !u!114 &4761208676445937763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,6 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4251acc231f39a34383217063fe6149d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropXp
+  xpAmount: 1
   dropRadius: 1
   dropInterval: 0.1
 --- !u!95 &-5572101120445910808

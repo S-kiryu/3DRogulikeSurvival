@@ -8,36 +8,29 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private int _coinReward = 1;
     [SerializeField] private int _scoreReward = 100;
 
-    private ScoreManager _scoreManager;
+    private EnemyController _controller;
+    private EnemyIdentity _identity;
+    private bool _isDead = false;
 
     public float CurrentHealth { get; private set; }
     public int MaxHealth => _statusSettings.MaxHealth;
     public float AttackPower => _statusSettings.AttackPower;
+    public bool IsAlive => !_isDead;
 
     public event Action OnDead;
 
     private void Awake()
     {
+        _controller = GetComponent<EnemyController>();
+        _identity = GetComponent<EnemyIdentity>();
         ResetEnemy();
     }
 
-    private void Start()
-    {
-        _scoreManager = ScoreManager.instance;
-
-        if (_scoreManager == null)
-        {
-            Debug.LogError("ScoreManager.instance が null です");
-        }
-    }
-
-    /// <summary>
-    /// ダメージを受ける
-    /// </summary>
     public void TakeDamage(float damage)
     {
+        if (_isDead) return;
+
         CurrentHealth -= damage;
-        Debug.Log(damage + "のダメージを受けた");
 
         if (CurrentHealth <= 0)
         {
@@ -47,36 +40,38 @@ public class EnemyStatus : MonoBehaviour
 
     private void Die()
     {
-        // XPドロップ
-        _dropXp.Drop();
+        _isDead = true;
 
+        // XPドロップ
+        if (_dropXp != null)
+        {
+            _dropXp.Drop();
+        }
+
+        // イベント発火
+        OnDead?.Invoke();
+        OnDead = null;
+
+        // プール返却
         if (EnemyPoolManager.Instance == null)
         {
             Debug.LogError("EnemyPoolManager.Instance が null");
             return;
         }
 
-        var identity = GetComponent<EnemyIdentity>();
-        if (identity == null)
+        if (_identity == null)
         {
             Debug.LogError("EnemyIdentity が null");
             return;
         }
 
-        // ⭐ イベント発火
-        OnDead?.Invoke();
-
-        // ⭐ イベント購読を全クリア（重要！）
-        OnDead = null;
-
-        EnemyPoolManager.Instance.Return(identity.Type, gameObject);
+        EnemyPoolManager.Instance.Return(_identity.Type, gameObject);
     }
 
     public void ResetEnemy()
     {
         CurrentHealth = MaxHealth;
-
-        //イベント購読をクリア
+        _isDead = false;
         OnDead = null;
     }
 }

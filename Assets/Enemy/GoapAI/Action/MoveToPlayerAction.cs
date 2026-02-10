@@ -45,6 +45,8 @@ public class MoveToPlayerAction : GoapAction
             _playerStatus = player.GetComponent<PlayerStatus>();
         }
 
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+
         // NavMeshAgent 設定
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updatePosition = true;

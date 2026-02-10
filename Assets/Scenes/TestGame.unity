@@ -7113,6 +7113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4251acc231f39a34383217063fe6149d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropXp
+  xpAmount: 1
   dropRadius: 1
   dropInterval: 0.05
 --- !u!1001 &238991226
@@ -9760,7 +9761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf705d18977cbcc47969f4200520989a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CinemachinePauseController
-  _vcam: {fileID: 1814188565}
 --- !u!1 &332893275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5308260716145073540, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
@@ -15859,7 +15859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &526301226
 Transform:
   m_ObjectHideFlags: 0
@@ -33000,6 +33000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Buildings_Football_01
       objectReference: {fileID: 0}
+    - target: {fileID: 7487424928399628284, guid: 1dbb86a57e9daf8478c4674651fc1bc5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -46417,8 +46421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _waves:
   - {fileID: 11400000, guid: 6f3b76abf9d94c241b1d602e52d6618c, type: 2}
-  - {fileID: 11400000, guid: c837ae2db90e21040b3c9cc5e16f46ea, type: 2}
-  - {fileID: 11400000, guid: 861bf857252e3a34c9cbf1a10f4d8af0, type: 2}
   _spawnInterval: 0.5
   _waveInterval: 1
   _spawnPoints:
@@ -48184,6 +48186,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2568164689367717875, guid: 2b4f4f377258643409ca76c9f5385d1e, type: 3}
   m_PrefabInstance: {fileID: 1474004344}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1533726279
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.701456
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.738983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915304541624293912, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
+      propertyPath: m_Name
+      value: ChickenEnemy (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
 --- !u!1001 &1534032953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69606,10 +69665,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7369086880652890784, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1788893953}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -69754,3 +69809,4 @@ SceneRoots:
   - {fileID: 1900681900}
   - {fileID: 1280677623}
   - {fileID: 1082668315}
+  - {fileID: 1533726279}
