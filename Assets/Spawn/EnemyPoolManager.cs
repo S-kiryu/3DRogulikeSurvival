@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPoolManager : MonoBehaviour
@@ -13,13 +13,11 @@ public class EnemyPoolManager : MonoBehaviour
     }
 
     [SerializeField] private PoolEntry[] pools;
-
     private Dictionary<EnemyType, EnemyPool> poolDict;
 
     private void Awake()
     {
         Instance = this;
-
         poolDict = new Dictionary<EnemyType, EnemyPool>();
         foreach (var entry in pools)
         {
@@ -31,10 +29,9 @@ public class EnemyPoolManager : MonoBehaviour
     {
         if (!poolDict.TryGetValue(type, out var pool))
         {
-            Debug.LogError($"EnemyPool ‚ª–¢“o˜^‚Å‚·: {type}");
+            Debug.LogError($"EnemyPool ãŒæœªç™»éŒ²ã§ã™: {type}");
             return null;
         }
-
         return pool.Get(position);
     }
 
@@ -42,10 +39,9 @@ public class EnemyPoolManager : MonoBehaviour
     {
         if (!poolDict.TryGetValue(type, out var pool))
         {
-            Debug.LogError($"EnemyPool ‚ª–¢“o˜^‚Å‚·: {type}");
+            Debug.LogError($"EnemyPool ãŒæœªç™»éŒ²ã§ã™: {type}");
             return;
         }
-
         pool.Return(obj);
     }
 }

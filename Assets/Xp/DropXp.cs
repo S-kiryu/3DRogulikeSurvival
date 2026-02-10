@@ -1,20 +1,26 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class DropXp : MonoBehaviour
 {
-    // ƒhƒƒbƒv‚·‚éXP‚Ì—Ê
-     private int xpAmount = 1;
-    // ƒhƒƒbƒv”ÍˆÍ‚Ì”¼Œa
+    private int xpAmount = 1;
     [SerializeField] private float dropRadius = 1.0f;
-    // ƒhƒƒbƒvŠÔŠu
     [SerializeField] private float dropInterval = 0.05f;
+
+    // â­ ã‚³ãƒ«ãƒ¼ãƒãƒ³ã®å‚ç…§ã‚’ä¿æŒ
+    private Coroutine _dropCoroutine;
 
     public void Drop()
     {
-        Debug.Log("XPƒhƒƒbƒvŠJn");
-        // Coroutine ŠJn
-        StartCoroutine(DropRoutine());
+        Debug.Log("XPãƒ‰ãƒ­ãƒƒãƒ—é–‹å§‹");
+
+        // â­ æ—¢å­˜ã®ã‚³ãƒ«ãƒ¼ãƒãƒ³ãŒã‚ã‚Œã°åœæ­¢
+        if (_dropCoroutine != null)
+        {
+            StopCoroutine(_dropCoroutine);
+        }
+
+        _dropCoroutine = StartCoroutine(DropRoutine());
     }
 
     private IEnumerator DropRoutine()
@@ -22,26 +28,31 @@ public class DropXp : MonoBehaviour
         for (int i = 0; i < xpAmount; i++)
         {
             Vector2 randomOffset = Random.insideUnitCircle * dropRadius;
-
-            // ­‚µã‹ó‚©‚çRay‚ğ”ò‚Î‚·
-            Vector3 rayStartPos = transform.position
-                + new Vector3(randomOffset.x, 5f, randomOffset.y);
-
+            Vector3 rayStartPos = transform.position + new Vector3(randomOffset.x, 5f, randomOffset.y);
             Ray ray = new Ray(rayStartPos, Vector3.down);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 10f, LayerMask.GetMask("jimen")))
             {
                 Vector3 dropPosition = hit.point;
-
-                // ­‚µ•‚‚©‚¹‚½‚¢ê‡i–„‚Ü‚è–h~j
                 dropPosition += Vector3.up * 0.05f;
-
                 XPpool.Instance.Get(dropPosition);
             }
 
             yield return new WaitForSeconds(dropInterval);
         }
+
+        // â­ ã‚³ãƒ«ãƒ¼ãƒãƒ³çµ‚äº†æ™‚ã«ã‚¯ãƒªã‚¢
+        _dropCoroutine = null;
     }
 
+    // â­ é‡è¦ï¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç„¡åŠ¹åŒ–ã•ã‚ŒãŸã‚‰ã‚³ãƒ«ãƒ¼ãƒãƒ³ã‚’åœæ­¢
+    private void OnDisable()
+    {
+        if (_dropCoroutine != null)
+        {
+            StopCoroutine(_dropCoroutine);
+            _dropCoroutine = null;
+        }
+    }
 }

@@ -63,22 +63,20 @@ public class EnemyStatus : MonoBehaviour
             return;
         }
 
+        // ⭐ イベント発火
         OnDead?.Invoke();
 
+        // ⭐ イベント購読を全クリア（重要！）
+        OnDead = null;
 
-
-        EnemyPoolManager.Instance.Return(
-            identity.Type,
-            gameObject
-        );
+        EnemyPoolManager.Instance.Return(identity.Type, gameObject);
     }
 
-
-    /// <summary>
-    /// Pool再利用用のリセット処理
-    /// </summary>
     public void ResetEnemy()
     {
         CurrentHealth = MaxHealth;
+
+        //イベント購読をクリア
+        OnDead = null;
     }
 }

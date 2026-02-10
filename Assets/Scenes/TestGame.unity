@@ -39603,6 +39603,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1930211228037739962, guid: 228a5021764eeb147aeca0d22028dd76, type: 3}
   m_PrefabInstance: {fileID: 1260505699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1261047774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1261047776}
+  - component: {fileID: 1261047775}
+  m_Layer: 0
+  m_Name: GCExample
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1261047775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261047774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1680f128b496b44a8bcf43fc55044b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GCExample
+--- !u!4 &1261047776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261047774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.97026, y: 0, z: 3.58375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1262488845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46372,8 +46416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _waves:
-  - {fileID: 11400000, guid: 6f3b76abf9d94c241b1d602e52d6618c, type: 2}
-  - {fileID: 11400000, guid: 861bf857252e3a34c9cbf1a10f4d8af0, type: 2}
+  - {fileID: 11400000, guid: c837ae2db90e21040b3c9cc5e16f46ea, type: 2}
   _spawnInterval: 0.5
   _waveInterval: 60
   _spawnPoints:
@@ -69680,6 +69723,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 526301226}
+  - {fileID: 1261047776}
   - {fileID: 330585546}
   - {fileID: 187526953}
   - {fileID: 410087041}

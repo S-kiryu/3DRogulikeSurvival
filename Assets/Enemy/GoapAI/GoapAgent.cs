@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class GoapAgent : MonoBehaviour
@@ -10,10 +10,10 @@ public class GoapAgent : MonoBehaviour
 
     private void Start()
     {
-        // ����AI���g����s����o�^
+        // このAIが使える行動を登録
         actions.AddRange(GetComponents<GoapAction>());
 
-        // �ڕW��ݒ�
+        // 目標を設定
         goals.Add(new Goal(
             new Dictionary<string, bool> { { "IsNearPlayer", true } },
             priority: 2
@@ -30,17 +30,17 @@ public class GoapAgent : MonoBehaviour
 
         if (!action.CheckCanExecute()) return;
 
-        // �s����
+        // 行動中
         if (action.ExecuteAction())
         {
-            // ���� �� ����
+            // 成功 → 次へ
             currentPlan.Dequeue();
         }
     }
 
     private void Plan()
     {
-        // �����ł͊ȈՓI�ɂP�ԍŏ���Goal�ɑΉ�����Action��I�ԗ�
+        // ここでは簡易的に１番最初のGoalに対応するActionを選ぶ例
         currentPlan = new Queue<GoapAction>();
 
         foreach (var action in actions)
@@ -51,5 +51,42 @@ public class GoapAgent : MonoBehaviour
                 break;
             }
         }
+    }
+
+
+
+    private void OnDisable()
+    {
+        // ⭐ プランをクリア
+        if (currentPlan != null)
+        {
+            currentPlan.Clear();
+        }
+    }
+
+    public void ResetAgent()
+    {
+        // プランをクリア
+        if (currentPlan != null)
+        {
+            currentPlan.Clear();
+        }
+
+        // ⭐ 全てのアクションをリセット（より安全）
+        foreach (var action in actions)
+        {
+            // MoveToPlayerAction 専用
+            if (action is MoveToPlayerAction moveAction)
+            {
+                moveAction.ResetAction();
+            }
+
+            // ⭐ 他のアクションタイプも将来追加される可能性があるため
+            // 共通のリセットインターフェースを使うのがベスト
+            // 今は問題ないが、将来のために覚えておいてください
+        }
+
+        // 再プランニング
+        Plan();
     }
 }
