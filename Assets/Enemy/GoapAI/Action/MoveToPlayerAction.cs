@@ -31,18 +31,6 @@ public class MoveToPlayerAction : GoapAction
 
     private void Start()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        if (_navMeshAgent == null)
-        {
-            _navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
-        }
-
-        _rigidbody = GetComponent<Rigidbody>();
-        if (_rigidbody != null)
-        {
-            _rigidbody.isKinematic = true;
-        }
-
         if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");

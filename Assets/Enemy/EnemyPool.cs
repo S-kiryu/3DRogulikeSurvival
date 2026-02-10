@@ -67,7 +67,6 @@ public class EnemyPool : MonoBehaviour
         if (animator != null)
         {
             animator.Rebind();
-            animator.Update(0f);
         }
 
         obj.SetActive(true);

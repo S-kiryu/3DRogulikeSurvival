@@ -15387,7 +15387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
   _enemyPrefab: {fileID: 6956889387109355156, guid: 2cbd89f84912884469029a937ce7e876, type: 3}
-  _initialCount: 30
+  _initialCount: 1
 --- !u!4 &514770023
 Transform:
   m_ObjectHideFlags: 0
@@ -46416,9 +46416,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   _waves:
+  - {fileID: 11400000, guid: 6f3b76abf9d94c241b1d602e52d6618c, type: 2}
   - {fileID: 11400000, guid: c837ae2db90e21040b3c9cc5e16f46ea, type: 2}
+  - {fileID: 11400000, guid: 861bf857252e3a34c9cbf1a10f4d8af0, type: 2}
   _spawnInterval: 0.5
-  _waveInterval: 60
+  _waveInterval: 1
   _spawnPoints:
   - {fileID: 1945575141}
   - {fileID: 782974188}
@@ -50585,8 +50587,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614034964}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.8883, y: -0, z: 22.42568}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.8883, y: 0, z: 22.42568}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50605,7 +50607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
   _enemyPrefab: {fileID: 6210767164444615586, guid: dbd9d6f725f7f0848b29c5359e9ba570, type: 3}
-  _initialCount: 30
+  _initialCount: 1
 --- !u!4 &1614821000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2069041786445612016, guid: 0a27e93b9ee7d0a479b08df8ab212b56, type: 3}
@@ -59991,7 +59993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
   _enemyPrefab: {fileID: 3676799342909545704, guid: 727bf35fd118f5840b4bc486a384e768, type: 3}
-  _initialCount: 30
+  _initialCount: 1
 --- !u!4 &1900681900
 Transform:
   m_ObjectHideFlags: 0
@@ -63327,7 +63329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::XPpool
   _xpPrefab: {fileID: 8687033442405160758, guid: d02ccc7c8177e0643b4dbbaa80944183, type: 3}
-  _poolSize: 50
+  _poolSize: 1
 --- !u!4 &1994982278
 Transform:
   m_ObjectHideFlags: 0
@@ -63356,7 +63358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tomatopool
   _tomatoPrefab: {fileID: 693424484138706375, guid: 57f19a3f563a1d542ae8fccbe29897cd, type: 3}
-  _poolSize: 50
+  _poolSize: 1
 --- !u!4 &1995090957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3903850873364739114, guid: 3d75483b9cb29db46be8397b7b334ec2, type: 3}
@@ -69634,7 +69636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694697356100648545, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5308260716145073540, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       propertyPath: m_IsActive

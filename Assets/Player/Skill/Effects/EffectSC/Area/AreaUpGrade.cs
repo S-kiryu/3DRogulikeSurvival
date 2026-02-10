@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AreaAttackUp", menuName = "Game/SkillEffect/AreaAttack/AttackUp")]
