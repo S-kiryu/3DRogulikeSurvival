@@ -1198,7 +1198,6 @@ GameObject:
   - component: {fileID: -4472076026705814447}
   - component: {fileID: 1226864107726969061}
   - component: {fileID: 5468792851715757214}
-  - component: {fileID: 1765058634019378487}
   m_Layer: 0
   m_Name: Kitty_001
   m_TagString: Enemy
@@ -1364,30 +1363,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1765058634019378487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6956889387109355156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be2f4aa750c530144bd7219a00354c98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_WalkSpeed: 1
-  m_RunSpeed: 4
-  m_RotateSpeed: 245
-  m_Space: 1
-  m_JumpHeight: 5
-  m_VerticalID: Vert
-  m_StateID: State
-  m_LookWeight:
-    weight: 1
-    body: 0.3
-    head: 0.7
-    eyes: 1
 --- !u!1 &7006703883147717712
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,9 +43,8 @@ public class TomatoAttack : MonoBehaviour
                 enemy.TakeDamage(_damage);
                 Debug.Log("トマトの攻撃がヒット！ダメージ: " + _damage);
             }
+            ReturnToPool();
         }
-
-        ReturnToPool();
     }
 
     // プールに戻すメソッド

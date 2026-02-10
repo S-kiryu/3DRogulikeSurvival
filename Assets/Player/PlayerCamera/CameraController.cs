@@ -7,13 +7,13 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // カメラのY軸の角度を取得
-        float targetY = _cameraTransform.eulerAngles.y;
+            // カメラのY軸の角度を取得
+            float targetY = _cameraTransform.eulerAngles.y;
 
-        // プレイヤーの現在の角度
-        Vector3 playerRotation = transform.eulerAngles;
+            // プレイヤーの現在の角度
+            Vector3 playerRotation = transform.eulerAngles;
 
-        // プレイヤーのYだけをカメラに合わせる
-        transform.rotation = Quaternion.Euler(0f, targetY, 0f);
+            // プレイヤーのYだけをカメラに合わせる
+            transform.rotation = Quaternion.Euler(0f, targetY, 0f); 
     }
 }

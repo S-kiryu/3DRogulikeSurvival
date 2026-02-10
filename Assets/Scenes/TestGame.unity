@@ -9590,6 +9590,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9747,6 +9748,19 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf705d18977cbcc47969f4200520989a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CinemachinePauseController
+  _vcam: {fileID: 1814188565}
 --- !u!1 &332893275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5308260716145073540, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
@@ -52586,7 +52600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -69571,6 +69585,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 3415955725935956508, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3694697356100648545, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -69595,6 +69613,10 @@ PrefabInstance:
       propertyPath: effectController
       value: 
       objectReference: {fileID: 1895153558}
+    - target: {fileID: 6845731728987905905, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6845731728987905905, guid: fb336303f369ebb4fac7f95b864c182e, type: 3}
       propertyPath: _cameraTransform
       value: 

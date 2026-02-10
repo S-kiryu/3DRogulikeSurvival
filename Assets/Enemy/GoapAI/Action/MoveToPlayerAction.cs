@@ -52,7 +52,7 @@ public class MoveToPlayerAction : GoapAction
             _playerStatus = player.GetComponent<PlayerStatus>();
         }
 
-        // ★ NavMeshAgent 設定
+        //NavMeshAgent 設定
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updatePosition = true;
         _navMeshAgent.stoppingDistance = stopDistance;
@@ -95,7 +95,7 @@ public class MoveToPlayerAction : GoapAction
             );
         }
 
-        // ★ 毎フレーム目的地を更新するだけ
+        //毎フレーム目的地を更新するだけ
         _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(player.position);
 
