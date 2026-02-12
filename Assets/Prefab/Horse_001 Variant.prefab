@@ -822,6 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4251acc231f39a34383217063fe6149d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropXp
+  xpAmount: 1
   dropRadius: 1
   dropInterval: 0.05
 --- !u!114 &5396930646317370413
@@ -844,8 +845,8 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3676799342909545704}
-  m_Enabled: 1
-  m_AgentTypeID: -334000983
+  m_Enabled: 0
+  m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8

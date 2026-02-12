@@ -19,10 +19,16 @@ public class EnemyPool : MonoBehaviour
     private GameObject Create()
     {
         var obj = Instantiate(_enemyPrefab);
+
+        var agent = obj.GetComponent<NavMeshAgent>();
+        if (agent != null)
+            agent.enabled = false;
+
         obj.SetActive(false);
         pool.Enqueue(obj);
         return obj;
     }
+
 
     public GameObject Get(Vector3 position)
     {
@@ -30,44 +36,40 @@ public class EnemyPool : MonoBehaviour
             Create();
 
         var obj = pool.Dequeue();
-        obj.transform.position = position;
 
-        // NavMeshAgent を再有効化
         var navAgent = obj.GetComponent<NavMeshAgent>();
+        if (navAgent != null)
+            navAgent.enabled = false;
+
+        // ★ NavMesh上の位置を取得
+        Vector3 spawnPos = position;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(position, out hit, 5f, NavMesh.AllAreas))
+            spawnPos = hit.position;
+
+        obj.transform.position = spawnPos;
+
+        // Agent再有効化
         if (navAgent != null)
         {
             navAgent.enabled = true;
-
-            if (navAgent.isOnNavMesh)
-            {
-                navAgent.Warp(position);
-            }
-            else
-            {
-                navAgent.nextPosition = position;
-            }
+            navAgent.Warp(spawnPos);
         }
 
-        // EnemyStatus をリセット
+        // EnemyStatus リセット
         var status = obj.GetComponent<EnemyStatus>();
         if (status != null)
-        {
             status.ResetEnemy();
-        }
 
-        // GoapAgent を再初期化
+        // GOAP
         var goapAgent = obj.GetComponent<GoapAgent>();
         if (goapAgent != null)
-        {
             goapAgent.ResetAgent();
-        }
 
-        // ⭐ Animator をリセット
+        // Animator
         var animator = obj.GetComponent<Animator>();
         if (animator != null)
-        {
             animator.Rebind();
-        }
 
         obj.SetActive(true);
         return obj;
