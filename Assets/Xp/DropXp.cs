@@ -17,13 +17,19 @@ public class DropXp : MonoBehaviour
 
     public void Drop()
     {
-        if (_dropCoroutine != null)
+        for (int i = 0; i < xpAmount; i++)
         {
-            StopCoroutine(_dropCoroutine);
-        }
+            Vector2 randomOffset = Random.insideUnitCircle * dropRadius;
+            Vector3 rayStartPos = transform.position + new Vector3(randomOffset.x, 5f, randomOffset.y);
 
-        _dropCoroutine = StartCoroutine(DropRoutine());
+            if (Physics.Raycast(rayStartPos, Vector3.down, out RaycastHit hit, 10f, _jimenLayerMask))
+            {
+                Vector3 dropPosition = hit.point + Vector3.up * 0.05f;
+                XPpool.Instance.Get(dropPosition);
+            }
+        }
     }
+
 
     private IEnumerator DropRoutine()
     {

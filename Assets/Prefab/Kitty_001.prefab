@@ -1191,8 +1191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2973452480082931141}
   - component: {fileID: 2806142507393424480}
-  - component: {fileID: 3820266453813810066}
-  - component: {fileID: 8352188750273593707}
+  - component: {fileID: 94128610196981290}
   - component: {fileID: 3639270550211422665}
   - component: {fileID: 1640244025181950954}
   - component: {fileID: -4472076026705814447}
@@ -1244,7 +1243,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3820266453813810066
+--- !u!114 &94128610196981290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1253,26 +1252,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6956889387109355156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec94c774cab1577449fdfc9592869a3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 163f3e1f3d0d23b47b07745a9ae0d66e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayerAction
-  cost: 1
-  player: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   stopDistance: 1.5
---- !u!114 &8352188750273593707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6956889387109355156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e65cca8f37eb7a4c95bac7431a54da0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GoapAgent
-  actions:
-  - {fileID: 3820266453813810066}
+  updateInterval: 4
 --- !u!114 &3639270550211422665
 MonoBehaviour:
   m_ObjectHideFlags: 0

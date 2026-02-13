@@ -30,6 +30,7 @@ public class EnemyStatus : MonoBehaviour
     {
         if (_isDead) return;
 
+        Debug.Log("敵にダメージ");
         CurrentHealth -= damage;
 
         if (CurrentHealth <= 0)
@@ -40,11 +41,14 @@ public class EnemyStatus : MonoBehaviour
 
     private void Die()
     {
+        Debug.Log("死んだー");
+
         _isDead = true;
 
         // XPドロップ
         if (_dropXp != null)
         {
+            Debug.Log("XPをドロップ");
             _dropXp.Drop();
         }
 
