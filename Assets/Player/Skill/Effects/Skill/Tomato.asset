@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: Tomato
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  id: -2086888388
   skillName: Tomato
-  skillDescription: 
-  icon: {fileID: 0}
+  skillDescription: Get the tomato item
+  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 9d4156c736e13a34abdca38f765b3520, type: 2}
@@ -23,3 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bc83f69b5d04fee4ab97954434cf1f9b, type: 2}
   - {fileID: 11400000, guid: bc83f69b5d04fee4ab97954434cf1f9b, type: 2}
   - {fileID: 11400000, guid: bc83f69b5d04fee4ab97954434cf1f9b, type: 2}
+  count: 0

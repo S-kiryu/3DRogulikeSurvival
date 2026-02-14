@@ -16,8 +16,6 @@ public class LevelUpManager : MonoBehaviour
     //‘I‘ð‚³‚ê‚½ƒXƒLƒ‹‚Ì•Û‘¶
     private HashSet<Skill> _selectedSkills = new HashSet<Skill>();
     private List<Skill> _runtimeSkills;
-    private HashSet<int> _selectedSkillIds = new HashSet<int>();
-    private Dictionary<int, int> _skillSelectCount = new Dictionary<int, int>();
 
     private bool _isProcessingLevelUp = false;
     private bool _isPaused = false;

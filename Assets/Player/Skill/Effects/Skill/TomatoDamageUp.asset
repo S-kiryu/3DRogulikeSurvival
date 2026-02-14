@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   id: -789807416
   skillName: TomatoDMGup
-  skillDescription: 
-  icon: {fileID: 0}
+  skillDescription: Increased tomato damage
+  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: e8a8e35c3d3c4784da8046bd90e1abf2, type: 2}
   upgradeSkills: []
-  count: 1
+  count: 5

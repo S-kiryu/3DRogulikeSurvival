@@ -18,11 +18,24 @@ public class SkillButton : MonoBehaviour
         {
             _button = GetComponent<Button>();
         }
+
+        // Imageコンポーネントも取得
+        if (_icon == null)
+        {
+            _icon = GetComponent<Image>();
+        }
     }
 
     // スキルと選択時のコールバックを設定
     public void SetSkill(Skill skill, System.Action<Skill> onSelected)
     {
+        _skill = skill;
+        _onSelected = onSelected;
+
+        Debug.Log($"Icon is null: {skill.icon == null}");
+        Debug.Log($"_icon component is null: {_icon == null}");
+
+        _icon.sprite = skill.icon;
 
         _skill = skill;
         _onSelected = onSelected;

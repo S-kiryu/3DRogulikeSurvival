@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   id: -2130837199
   skillName: katana
-  skillDescription: 
-  icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  skillDescription: Get a knife
+  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 481d33f9743f3ce4aa2fc11823eeed25, type: 2}
   upgradeSkills: []
-  count: 10
+  count: 6

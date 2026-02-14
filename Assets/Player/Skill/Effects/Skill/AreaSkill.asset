@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   id: -1991004820
   skillName: Area
-  skillDescription: 
-  icon: {fileID: 0}
+  skillDescription: Get the area skill
+  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: d7606f18783088a47a6c06838d6e2a00, type: 2}
@@ -25,4 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
   - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
   - {fileID: 11400000, guid: 53bfc019458b99f44975a86eb689cb27, type: 2}
-  count: 1
+  count: 5
