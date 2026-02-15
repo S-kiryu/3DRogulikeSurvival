@@ -5,6 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float stopDistance = 1.5f;
     [SerializeField] private float updateInterval = 1f;
+    [SerializeField] private float moveSpeed = 3.5f;
 
     private Transform _player;
     private NavMeshAgent _navMeshAgent;
@@ -33,6 +34,8 @@ public class EnemyController : MonoBehaviour
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.stoppingDistance = stopDistance;
         _lastDestination = Vector3.positiveInfinity;
+        _navMeshAgent.speed = moveSpeed;
+
     }
 
     private void Update()
@@ -53,6 +56,7 @@ public class EnemyController : MonoBehaviour
         lookDir.y = 0f;
         if (lookDir.sqrMagnitude > 0.001f)
         {
+            // プレイヤーの方向を向く
             transform.rotation = Quaternion.Lerp(
                 transform.rotation,
                 Quaternion.LookRotation(lookDir),
@@ -70,6 +74,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    // NavMeshAgentを停止してパスをリセット
     private void StopAgent()
     {
         if (_navMeshAgent == null || !_navMeshAgent.enabled || !_navMeshAgent.isOnNavMesh)

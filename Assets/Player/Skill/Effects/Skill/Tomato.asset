@@ -15,7 +15,7 @@ MonoBehaviour:
   id: -2086888388
   skillName: Tomato
   skillDescription: Get the tomato item
-  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
+  icon: {fileID: 21300000, guid: d030f8c4749fda94cb9942da11c63c2a, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 9d4156c736e13a34abdca38f765b3520, type: 2}

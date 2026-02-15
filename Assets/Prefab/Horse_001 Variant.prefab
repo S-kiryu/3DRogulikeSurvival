@@ -716,6 +716,7 @@ GameObject:
   - component: {fileID: 5360276142085854265}
   - component: {fileID: 2502623945751424782}
   - component: {fileID: 5396930646317370413}
+  - component: {fileID: 3462957578316533404}
   - component: {fileID: 6039486114518349136}
   - component: {fileID: 8782745659787972378}
   m_Layer: 0
@@ -778,6 +779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   stopDistance: 1.5
   updateInterval: 1
+  moveSpeed: 3
 --- !u!114 &5360276142085854265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,10 +792,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e85f12f78eb2714093d168bfa9ef179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStatus
-  _statusSettings: {fileID: 11400000, guid: 3b6122ed3f489c543998582deb540c46, type: 2}
+  _statusSettings: {fileID: 11400000, guid: 10164cd063a96a1418e18fe6c6cb5476, type: 2}
   _dropXp: {fileID: 2502623945751424782}
   _coinReward: 1
-  _scoreReward: 100
+  _scoreReward: 1000
 --- !u!114 &2502623945751424782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +824,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyIdentity
   Type: 2
+--- !u!114 &3462957578316533404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676799342909545704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26406ed1ab00ee45b959b256edd63ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTeik
+  _damageAmount: 10
 --- !u!195 &6039486114518349136
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -829,7 +844,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3676799342909545704}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5

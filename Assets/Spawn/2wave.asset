@@ -10,12 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc53b20cd790d3946bdb82421d6778b8, type: 3}
-  m_Name: takusan
+  m_Name: 2wave
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   Enemies:
-  - Type: 0
-    SpawnCount: 1
   - Type: 1
-    SpawnCount: 1
-  - Type: 2
-    SpawnCount: 1
+    SpawnCount: 20

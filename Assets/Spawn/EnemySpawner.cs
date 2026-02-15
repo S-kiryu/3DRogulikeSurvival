@@ -13,11 +13,16 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("スポーン設定")]
     [SerializeField] private Transform[] _spawnPoints;
-    
+
 
     private int _currentWaveIndex = 0;
     private int _aliveEnemyCount = 0;
     private int _lastSpawnIndex = -1;
+
+    // ウェーブ情報を外部から取得できるプロパティを追加
+    public int CurrentWaveNumber => _currentWaveIndex + 1;
+    public int TotalWaveCount => _waves?.Length ?? 0;
+    public bool IsGameActive { get; private set; } = false;
 
     public enum EnemyType
     {
@@ -39,37 +44,39 @@ public class EnemySpawner : MonoBehaviour
 
         Debug.Log($"Wave数: {_waves.Length}");
 
+        IsGameActive = true;
         StartCoroutine(WaveLoop());
     }
 
     /// <summary>
     /// Wave を順番に再生する
     /// </summary>
-private IEnumerator WaveLoop()
-{
-    while (_currentWaveIndex < _waves.Length)
+    private IEnumerator WaveLoop()
     {
-        WaveData wave = _waves[_currentWaveIndex];
+        while (_currentWaveIndex < _waves.Length)
+        {
+            WaveData wave = _waves[_currentWaveIndex];
 
-        Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
+            Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
 
-        yield return StartCoroutine(PlayWave(wave));
-        yield return new WaitUntil(() => _aliveEnemyCount <= 0);
+            yield return StartCoroutine(PlayWave(wave));
+            yield return new WaitUntil(() => _aliveEnemyCount <= 0);
 
-        Debug.Log($"Wave {_currentWaveIndex + 1} 終了");
+            Debug.Log($"Wave {_currentWaveIndex + 1} 終了");
 
-        yield return new WaitForSeconds(_waveInterval);
+            yield return new WaitForSeconds(_waveInterval);
 
-        _currentWaveIndex++;
+            _currentWaveIndex++;
+        }
+
+        // 全ウェーブ終了 → ゲームクリア通知
+        IsGameActive = false;
+        PlayerStatus playerStatus = FindFirstObjectByType<PlayerStatus>();
+        if (playerStatus != null)
+        {
+            playerStatus.NotifyGameClear();
+        }
     }
-
-    // 全ウェーブ終了 → ゲームクリア通知
-    PlayerStatus playerStatus = FindFirstObjectByType<PlayerStatus>();
-    if (playerStatus != null)
-    {
-        playerStatus.NotifyGameClear();
-    }
-}
 
     /// <summary>
     /// WaveData の中身を順番・数・間隔どおりにスポーン
@@ -137,7 +144,7 @@ private IEnumerator WaveLoop()
         Transform spawnPoint = GetRandomSpawnPoint();
 
         GameObject enemy = EnemyPoolManager.Instance
-    .Get(enemyData.Type, spawnPoint.position);
+            .Get(enemyData.Type, spawnPoint.position);
 
 
         _aliveEnemyCount++;

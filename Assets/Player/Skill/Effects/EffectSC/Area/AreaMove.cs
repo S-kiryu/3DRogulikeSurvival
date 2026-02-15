@@ -6,6 +6,7 @@ public class AreaMove : AttackBase
     [SerializeField] private float _coolTime = 1f;
     public override float CoolTime => _coolTime;
 
+    //エリア攻撃の範囲とダメージ
     [SerializeField] private float _attackRadius = 2f;
     [SerializeField] private float _attackDamage = 10f;
     [SerializeField] private float _areaAttackMultiplier = 0.5f;
@@ -26,6 +27,7 @@ public class AreaMove : AttackBase
         _attackRadius += 0.5f;
     }
 
+    //クールタイム短縮
     public void ReduceCoolTime(float value)
     {
         _coolTime = Mathf.Max(0.1f, _coolTime - value);

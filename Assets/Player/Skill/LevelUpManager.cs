@@ -6,17 +6,14 @@ using UnityEngine;
 public class LevelUpManager : MonoBehaviour
 {
     public static LevelUpManager Instance { get; private set; }
-
     [SerializeField] private SkillDatabase _database;
     [SerializeField] private SkillSelectUI _ui;
     [SerializeField] private PlayerStatus _player;
-    [SerializeField] private float _delayBetweenLevelUps = 0.5f; // レベルアップ間の遅延
+    [SerializeField] private float _delayBetweenLevelUps = 0.5f;
 
     private Queue<int> _levelUpQueue = new Queue<int>();
-    //選択されたスキルの保存
     private HashSet<Skill> _selectedSkills = new HashSet<Skill>();
-    private List<Skill> _runtimeSkills;
-
+    private List<SkillInstance> _runtimeSkills;
     private bool _isProcessingLevelUp = false;
     private bool _isPaused = false;
 
@@ -37,87 +34,83 @@ public class LevelUpManager : MonoBehaviour
     private void Start()
     {
         // ランタイム用スキルリストの初期化
-        _runtimeSkills = new List<Skill>(_database.skills);
+        _runtimeSkills = new List<SkillInstance>();
+        foreach (var skill in _database.skills)
+        {
+            _runtimeSkills.Add(new SkillInstance(skill));
+        }
     }
 
-    //キューにレベルアップを追加
     public void OnLevelUp()
     {
         _levelUpQueue.Enqueue(1);
-
         if (!_isProcessingLevelUp)
         {
             StartCoroutine(ProcessNextLevelUpCoroutine());
         }
     }
 
-    // レベルアップ処理のコルーチン
     private IEnumerator ProcessNextLevelUpCoroutine()
     {
         _isProcessingLevelUp = true;
-
         while (_levelUpQueue.Count > 0)
         {
             _isPaused = true;
-
             _levelUpQueue.Dequeue();
 
-            //選択されたスキルに基づいて、まだ選択されていないスキルからランダムに3つ選ぶ
             var skills = _runtimeSkills
-                .Where(s => !_selectedSkills.Contains(s))
+                .Where(s => !_selectedSkills.Contains(s.skill))
                 .OrderBy(x => Random.value)
                 .Take(3)
+                .Select(s => s.skill)  // UI表示用にSkillを取得
                 .ToList();
 
-
-            // スキル選択を待つ
             bool skillSelected = false;
             _ui.Open(skills, (skill) => {
                 SelectSkill(skill);
                 skillSelected = true;
             });
 
-            // スキルが選択されるまで待機
             yield return new WaitUntil(() => skillSelected);
 
-            // 次のレベルアップまで少し待つ
             if (_levelUpQueue.Count > 0)
             {
                 yield return new WaitForSecondsRealtime(_delayBetweenLevelUps);
             }
         }
 
-        // すべてのレベルアップが完了
         _isProcessingLevelUp = false;
         _isPaused = false;
     }
 
-    // スキル選択時の処理
     private void SelectSkill(Skill skill)
     {
-        // 効果適用（毎回）
+        // ランタイムデータを検索
+        var skillInstance = _runtimeSkills.FirstOrDefault(s => s.skill == skill);
+        if (skillInstance == null) return;
+
+        // 効果適用
         skill.skillEffect.Apply(_player);
 
-        // 残り回数を減らす
-        skill.count--;
-
-        if (skill.count <= 0)
+        // ランタイムデータのみを更新
+        skillInstance.remainingCount--;
+        if (skillInstance.remainingCount <= 0)
         {
-            _runtimeSkills.Remove(skill);
+            _runtimeSkills.Remove(skillInstance);
         }
+
+        _selectedSkills.Add(skill);
 
         // 派生スキル追加
         if (skill.upgradeSkills != null)
         {
             foreach (var upgrade in skill.upgradeSkills)
             {
-                if (!_runtimeSkills.Contains(upgrade))
+                if (!_runtimeSkills.Any(s => s.skill == upgrade))
                 {
-                    _runtimeSkills.Add(upgrade);
+                    _runtimeSkills.Add(new SkillInstance(upgrade));
                 }
             }
         }
     }
-
-
 }

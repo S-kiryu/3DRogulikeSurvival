@@ -976,6 +976,7 @@ GameObject:
   - component: {fileID: -5572101120445910808}
   - component: {fileID: -3789055341144175710}
   - component: {fileID: 1766497718647515662}
+  - component: {fileID: 3009932843345274670}
   m_Layer: 0
   m_Name: ChickenEnemy
   m_TagString: Enemy
@@ -1036,6 +1037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   stopDistance: 1.5
   updateInterval: 2
+  moveSpeed: 6
 --- !u!114 &4761208676445937763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,7 +1111,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6210767164444615586}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -1124,6 +1126,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3009932843345274670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210767164444615586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26406ed1ab00ee45b959b256edd63ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTeik
+  _damageAmount: 10
 --- !u!1 &6379720492789601664
 GameObject:
   m_ObjectHideFlags: 0
