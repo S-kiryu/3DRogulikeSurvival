@@ -19,6 +19,5 @@ MonoBehaviour:
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 481d33f9743f3ce4aa2fc11823eeed25, type: 2}
-  upgradeSkills:
-  - {fileID: 11400000}
-  count: 1
+  upgradeSkills: []
+  count: 10

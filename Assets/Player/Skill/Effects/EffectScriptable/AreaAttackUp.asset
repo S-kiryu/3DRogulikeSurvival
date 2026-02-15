@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2af63ca5b58c143bffdd94c208034c, type: 3}
   m_Name: AreaAttackUp
   m_EditorClassIdentifier: Assembly-CSharp::AreaUpGrade
-  _attackDamageUp: 100
+  _attackDamageUp: 5

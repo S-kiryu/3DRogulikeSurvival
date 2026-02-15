@@ -8,7 +8,7 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private int _coinReward = 1;
     [SerializeField] private int _scoreReward = 100;
 
-    private EnemyController _controller;
+    private ScoreManager _scoreManager;
     private EnemyIdentity _identity;
     private bool _isDead = false;
 
@@ -21,8 +21,8 @@ public class EnemyStatus : MonoBehaviour
 
     private void Awake()
     {
-        _controller = GetComponent<EnemyController>();
         _identity = GetComponent<EnemyIdentity>();
+        _scoreManager = FindFirstObjectByType<ScoreManager>();
         ResetEnemy();
     }
 
@@ -43,6 +43,7 @@ public class EnemyStatus : MonoBehaviour
     {
         Debug.Log("死んだー");
 
+        _scoreManager.ScoreUP(_scoreReward);
         _isDead = true;
 
         // XPドロップ

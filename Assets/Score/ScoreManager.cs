@@ -6,6 +6,8 @@ public class ScoreManager : MonoBehaviour
 
     //‰ŠúƒXƒRƒA
     [SerializeField] private int _score = 0;
+    [SerializeField] private PlayerStatusManager _playerStatus;
+
     public int Score => _score;
 
     public void Awake()
@@ -25,6 +27,7 @@ public class ScoreManager : MonoBehaviour
     public void ScoreUP(int point) 
     {
         _score += point;
+        _playerStatus.AddMoney(point);
 
         Debug.Log(point);
     }
