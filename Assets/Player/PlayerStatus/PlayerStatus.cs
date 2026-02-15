@@ -79,4 +79,12 @@ public class PlayerStatus : MonoBehaviour
     }
 
     public bool IsAlive => _status.CurrentHealth > 0;
+
+    /// <summary>
+    /// ƒQ[ƒ€ƒNƒŠƒA‚ÉŒÄ‚Ô
+    /// </summary>
+    public void NotifyGameClear()
+    {
+        OnGameClear?.Invoke();
+    }
 }

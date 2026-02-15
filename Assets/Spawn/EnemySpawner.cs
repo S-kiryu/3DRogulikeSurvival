@@ -45,37 +45,31 @@ public class EnemySpawner : MonoBehaviour
     /// <summary>
     /// Wave を順番に再生する
     /// </summary>
-    private IEnumerator WaveLoop()
+private IEnumerator WaveLoop()
+{
+    while (_currentWaveIndex < _waves.Length)
     {
-        while (_currentWaveIndex < _waves.Length)
-        {
-            WaveData wave = _waves[_currentWaveIndex];
+        WaveData wave = _waves[_currentWaveIndex];
 
-            Debug.Log(
-                $"Wave[{_currentWaveIndex}] : " +
-                $"wave is null = {wave == null}"
-            );
+        Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
 
-            Debug.Log(
-                $"Enemies null = {wave.Enemies == null}, " +
-                $"Length = {(wave.Enemies == null ? -1 : wave.Enemies.Length)}"
-            );
+        yield return StartCoroutine(PlayWave(wave));
+        yield return new WaitUntil(() => _aliveEnemyCount <= 0);
 
-            Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
+        Debug.Log($"Wave {_currentWaveIndex + 1} 終了");
 
-            //Wave が終わるまで待つ
-            yield return StartCoroutine(PlayWave(wave));
+        yield return new WaitForSeconds(_waveInterval);
 
-
-            yield return new WaitUntil(() => _aliveEnemyCount <= 0);
-
-            Debug.Log($"Wave {_currentWaveIndex + 1} 終了");
-
-            yield return new WaitForSeconds(_waveInterval);
-
-            _currentWaveIndex++;
-        }
+        _currentWaveIndex++;
     }
+
+    // 全ウェーブ終了 → ゲームクリア通知
+    PlayerStatus playerStatus = FindFirstObjectByType<PlayerStatus>();
+    if (playerStatus != null)
+    {
+        playerStatus.NotifyGameClear();
+    }
+}
 
     /// <summary>
     /// WaveData の中身を順番・数・間隔どおりにスポーン
