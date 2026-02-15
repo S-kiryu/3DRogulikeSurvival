@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   Enemies:
   - Type: 2
-    SpawnCount: 50
+    SpawnCount: 20
   - Type: 0
     SpawnCount: 50
   - Type: 0

@@ -20,4 +20,4 @@ MonoBehaviour:
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 27848040d15391741af3d666f52ef9d2, type: 2}
   upgradeSkills: []
-  count: 1
+  count: 0

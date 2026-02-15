@@ -21,4 +21,4 @@ MonoBehaviour:
   skillEffect: {fileID: 11400000, guid: 83f5dd8b6c6a32e4db4b22e259e98f15, type: 2}
   upgradeSkills:
   - {fileID: 11400000}
-  count: 1
+  count: 5
