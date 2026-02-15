@@ -15,9 +15,9 @@ MonoBehaviour:
   id: -789807416
   skillName: TomatoDMGup
   skillDescription: Increased tomato damage
-  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
+  icon: {fileID: 21300000, guid: d030f8c4749fda94cb9942da11c63c2a, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: e8a8e35c3d3c4784da8046bd90e1abf2, type: 2}
   upgradeSkills: []
-  count: 5
+  count: 3
