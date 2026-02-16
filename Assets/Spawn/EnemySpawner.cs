@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     private int _aliveEnemyCount = 0;
     private int _lastSpawnIndex = -1;
 
-    // ウェーブ情報を外部から取得できるプロパティを追加
+    // ウェーブ情報を外部から取得できるプロパティ
     public int CurrentWaveNumber => _currentWaveIndex + 1;
     public int TotalWaveCount => _waves?.Length ?? 0;
     public bool IsGameActive { get; private set; } = false;
