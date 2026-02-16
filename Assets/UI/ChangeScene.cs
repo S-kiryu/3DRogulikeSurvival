@@ -15,7 +15,7 @@ public class ChangeScene : MonoBehaviour
     {
         loadingImage.SetActive(true);
 
-        yield return null; // © ‚±‚ê‚ğ“ü‚ê‚é‚¾‚¯
+        yield return null;
 
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneIndex);
 
