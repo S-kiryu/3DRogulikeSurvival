@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 280051899
   skillName: AreaAttackUp
   skillDescription: Increases area damage
-  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
+  icon: {fileID: 21300000, guid: a09e8396e89e38946b5519971b5e2177, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 27848040d15391741af3d666f52ef9d2, type: 2}

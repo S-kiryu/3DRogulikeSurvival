@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2ed09e9124eb254f804a4503ca4dc70, type: 3}
   m_Name: AreaSpeedUp
   m_EditorClassIdentifier: Assembly-CSharp::AreaUpSpeed
-  _coolTime: 5
+  _coolTime: 0.5

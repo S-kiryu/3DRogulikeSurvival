@@ -50,6 +50,7 @@ public class LevelUpManager : MonoBehaviour
         }
     }
 
+    // レベルアップ処理のコルーチン
     private IEnumerator ProcessNextLevelUpCoroutine()
     {
         _isProcessingLevelUp = true;
@@ -58,6 +59,7 @@ public class LevelUpManager : MonoBehaviour
             _isPaused = true;
             _levelUpQueue.Dequeue();
 
+            // UIに表示するスキルをランダムに選択
             var skills = _runtimeSkills
                 .Where(s => !_selectedSkills.Contains(s.skill))
                 .OrderBy(x => Random.value)
