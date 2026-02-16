@@ -16,20 +16,13 @@ public class EnemySpawner : MonoBehaviour
 
 
     private int _currentWaveIndex = 0;
-    private int _aliveEnemyCount = 0;
+    [Tooltip("生きてる敵の数")]private int _aliveEnemyCount = 0;
     private int _lastSpawnIndex = -1;
 
     // ウェーブ情報を外部から取得できるプロパティ
     public int CurrentWaveNumber => _currentWaveIndex + 1;
     public int TotalWaveCount => _waves?.Length ?? 0;
     public bool IsGameActive { get; private set; } = false;
-
-    public enum EnemyType
-    {
-        Slime,
-        Bat,
-        Goblin
-    }
 
 
     private void Start()
@@ -60,6 +53,8 @@ public class EnemySpawner : MonoBehaviour
             Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
 
             yield return StartCoroutine(PlayWave(wave));
+
+            //敵が全滅するまで待機
             yield return new WaitUntil(() => _aliveEnemyCount <= 0);
 
             Debug.Log($"Wave {_currentWaveIndex + 1} 終了");
@@ -69,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
             _currentWaveIndex++;
         }
 
-        // 全ウェーブ終了 → ゲームクリア通知
+        //ゲームクリア通知
         IsGameActive = false;
         PlayerStatus playerStatus = FindFirstObjectByType<PlayerStatus>();
         if (playerStatus != null)
@@ -85,35 +80,28 @@ public class EnemySpawner : MonoBehaviour
     {
         if (wave == null)
         {
-            Debug.LogError("PlayWave: wave が null");
+            Debug.LogError("wave が null");
             yield break;
         }
 
         if (wave.Enemies == null || wave.Enemies.Length == 0)
         {
-            Debug.LogError("PlayWave: Enemies が null または空です");
+            Debug.LogError("Enemies が null");
             yield break;
         }
 
-        Debug.Log($"PlayWave 開始: Enemies数 = {wave.Enemies.Length}");
-
-
         var spawnList = new List<EnemySpawnData>();
 
+        // WaveData の EnemySpawnData を SpawnCount 分だけ spawnList に追加
         foreach (var enemyData in wave.Enemies)
         {
-            Debug.Log(
-                $"EnemyData: Type={enemyData.Type}, " +
-                $"Count={enemyData.SpawnCount}"
-            );
-
             for (int i = 0; i < enemyData.SpawnCount; i++)
             {
                 spawnList.Add(enemyData);
             }
         }
 
-
+        // spawnList からランダムに EnemySpawnData を取り出してスポーン
         while (spawnList.Count > 0)
         {
             int index = Random.Range(0, spawnList.Count);
@@ -158,18 +146,19 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-
     private void OnEnemyDead()
     {
         _aliveEnemyCount--;
     }
 
     /// <summary>
-    /// スポーン地点をランダム取得（連続防止）
+    /// スポーン地点をランダム取得
     /// </summary>
     private Transform GetRandomSpawnPoint()
     {
         int index;
+
+        //ランダム生成を必ず1回行って判定したいからdoを使う
         do
         {
             index = Random.Range(0, _spawnPoints.Length);

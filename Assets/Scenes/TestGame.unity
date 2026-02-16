@@ -14332,6 +14332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190530043ca6f6144ac5f74d68f8fdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeScene
+  loadingImage: {fileID: 0}
 --- !u!1001 &452611636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23474,6 +23475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190530043ca6f6144ac5f74d68f8fdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChangeScene
+  loadingImage: {fileID: 0}
 --- !u!4 &705219134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3903850873364739114, guid: 3d75483b9cb29db46be8397b7b334ec2, type: 3}
@@ -34234,7 +34236,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1057600469143778702, guid: 9b1b693a97ab7c24daa33972315a9ad9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b1b693a97ab7c24daa33972315a9ad9, type: 3}

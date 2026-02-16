@@ -25,21 +25,23 @@ public class EnemyPoolManager : MonoBehaviour
         }
     }
 
+    /// 指定した EnemyType のオブジェクトをプールから取得
     public GameObject Get(EnemyType type, Vector3 position)
     {
         if (!poolDict.TryGetValue(type, out var pool))
         {
-            Debug.LogError($"EnemyPool が未登録です: {type}");
+            Debug.LogError($"{type}が未登録です");
             return null;
         }
         return pool.Get(position);
     }
 
+    // 指定した EnemyType のオブジェクトをプールに返却
     public void Return(EnemyType type, GameObject obj)
     {
         if (!poolDict.TryGetValue(type, out var pool))
         {
-            Debug.LogError($"EnemyPool が未登録です: {type}");
+            Debug.LogError($"{type}が未登録");
             return;
         }
         pool.Return(obj);
