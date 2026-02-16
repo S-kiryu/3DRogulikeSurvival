@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: TomatoDamageUp
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  id: -789807416
-  skillName: TomatoDMGup
-  skillDescription: Increased tomato damage
+  skillName: "\u30C8\u30DE\u30C8\u30C0\u30E1\u30FC\u30B8\u30A2\u30C3\u30D7"
+  skillDescription: "\u30C8\u30DE\u30C8\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u4E0A\u3052\u308B"
   icon: {fileID: 21300000, guid: d030f8c4749fda94cb9942da11c63c2a, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: AreaAttackUPGread
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  id: 280051899
-  skillName: AreaAttackUp
-  skillDescription: Increases area damage
+  skillName: "\u30A8\u30EA\u30A2\u30C0\u30E1\u30FC\u30B8UP"
+  skillDescription: "\u30A8\u30EA\u30A2\u30C0\u30E1\u30FC\u30B8\u304C\u4E0A\u304C\u308B\u3088"
   icon: {fileID: 21300000, guid: a09e8396e89e38946b5519971b5e2177, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: KatanaSkill
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  id: -2130837199
-  skillName: Knife
-  skillDescription: Get a knife
+  skillName: "\u30CA\u30A4\u30D5"
+  skillDescription: "\u30CA\u30A4\u30D5\u3092\u30B2\u30C3\u30C8\u3059\u308B"
   icon: {fileID: 21300000, guid: 8d374723d3fa2bf478edb8a7122fe322, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}

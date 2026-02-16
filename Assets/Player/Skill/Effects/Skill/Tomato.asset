@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4956a5777b84b2847b8e0ade7aef7ae5, type: 3}
   m_Name: Tomato
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  id: -2086888388
-  skillName: Tomato
+  skillName: "\u30C8\u30DE\u30C8"
   skillDescription: Get the tomato item
   icon: {fileID: 21300000, guid: d030f8c4749fda94cb9942da11c63c2a, type: 3}
   cooldown: 0
