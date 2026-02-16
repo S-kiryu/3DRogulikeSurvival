@@ -21,7 +21,7 @@ public class TomatoAttack : MonoBehaviour
         _timer = 0f;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(Vector3.forward * _speed * Time.deltaTime);
 

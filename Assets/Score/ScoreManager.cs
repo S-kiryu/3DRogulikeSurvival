@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
 
     public void Awake()
     {
+        _playerStatus = FindFirstObjectByType<PlayerStatusManager>();
         if (instance == null)
         {
             instance = this;

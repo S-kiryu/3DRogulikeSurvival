@@ -15,7 +15,7 @@ MonoBehaviour:
   id: -2130837199
   skillName: Knife
   skillDescription: Get a knife
-  icon: {fileID: 21300000, guid: 7d5d9a3852a8feb4da0b6fabbb5e4b27, type: 3}
+  icon: {fileID: 21300000, guid: 8d374723d3fa2bf478edb8a7122fe322, type: 3}
   cooldown: 0
   effectPrefab: {fileID: 0}
   skillEffect: {fileID: 11400000, guid: 481d33f9743f3ce4aa2fc11823eeed25, type: 2}
