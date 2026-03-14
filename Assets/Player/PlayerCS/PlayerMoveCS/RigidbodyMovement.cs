@@ -1,24 +1,51 @@
 using UnityEngine;
-public class RigidbodyMovement : MonoBehaviour, IMovement
+
+public class RigidbodyMovementExecutor : MonoBehaviour, IMovementExecutor
 {
-    //移動速度
-    [SerializeField] private float _speed = 5f;
-    //継承先でも使えるようにする
-    protected Rigidbody _rb;
+    private Rigidbody _rb;
+    private Vector3 _targetVelocity;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    public virtual void Move(Vector2 input)
+    //移動を実行する
+    public void Execute(Vector2 direction, float speed)
     {
-        //引数を元にRigidbodyの速度を設定する、ベクトルの長さをに１正規化してから速度を掛ける
-        Vector3 move = new Vector3(input.x, 0f, input.y).normalized;
-        Vector3 moveVelocity = move * _speed;
-        //Y軸の速度はそのままにする
-        Vector3 newVelocity = new Vector3(moveVelocity.x, _rb.linearVelocity.y, moveVelocity.z);
-        //Velocityを更新
-        _rb.linearVelocity = newVelocity;
+        if (LevelUpManager.Instance != null && LevelUpManager.Instance.IsPaused)
+        {
+            _targetVelocity = Vector3.zero;
+            return;
+        }
+
+        if (direction.sqrMagnitude <= 0.01f)
+        {
+            _targetVelocity = new Vector3(0f, _rb.linearVelocity.y, 0f);
+            return;
+        }
+
+        Vector3 moveDirection =
+            transform.forward * direction.y +
+            transform.right * direction.x;
+
+        moveDirection.Normalize();
+
+        _targetVelocity = moveDirection * speed;
+        _targetVelocity.y = _rb.linearVelocity.y;
     }
+
+    //物理演算の更新ごとに呼ばれる
+    private void FixedUpdate()
+    {
+        _rb.linearVelocity = _targetVelocity;
+    }
+
+    //動きを止める
+    public void Stop()
+    {
+        _targetVelocity = Vector3.zero;
+        _rb.linearVelocity = Vector3.zero;
+    }
+
 }

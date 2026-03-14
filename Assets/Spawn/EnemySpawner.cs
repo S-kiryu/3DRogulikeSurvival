@@ -1,0 +1,171 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+    [Header("ウェーブ設定")]
+    [SerializeField] private WaveData[] _waves;
+    // ウェーブ内の敵スポーン間隔
+    [SerializeField] private float _spawnInterval = 2f;
+    // ウェーブ間のインターバル
+    [SerializeField] private float _waveInterval = 5f;
+
+    [Header("スポーン設定")]
+    [SerializeField] private Transform[] _spawnPoints;
+
+
+    private int _currentWaveIndex = 0;
+    [Tooltip("生きてる敵の数")]private int _aliveEnemyCount = 0;
+    private int _lastSpawnIndex = -1;
+
+    // ウェーブ情報を外部から取得できるプロパティ
+    public int CurrentWaveNumber => _currentWaveIndex + 1;
+    public int TotalWaveCount => _waves?.Length ?? 0;
+    public bool IsGameActive { get; private set; } = false;
+
+
+    private void Start()
+    {
+        Debug.Log("EnemySpawner Start");
+
+        if (_waves == null)
+        {
+            Debug.LogError("_waves が null です");
+            return;
+        }
+
+        Debug.Log($"Wave数: {_waves.Length}");
+
+        IsGameActive = true;
+        StartCoroutine(WaveLoop());
+    }
+
+    /// <summary>
+    /// Wave を順番に再生する
+    /// </summary>
+    private IEnumerator WaveLoop()
+    {
+        while (_currentWaveIndex < _waves.Length)
+        {
+            WaveData wave = _waves[_currentWaveIndex];
+
+            Debug.Log($"Wave {_currentWaveIndex + 1} 開始");
+
+            yield return StartCoroutine(PlayWave(wave));
+
+            //敵が全滅するまで待機
+            yield return new WaitUntil(() => _aliveEnemyCount <= 0);
+
+            Debug.Log($"Wave {_currentWaveIndex + 1} 終了");
+
+            yield return new WaitForSeconds(_waveInterval);
+
+            _currentWaveIndex++;
+        }
+
+        //ゲームクリア通知
+        IsGameActive = false;
+        PlayerStatus playerStatus = FindFirstObjectByType<PlayerStatus>();
+        if (playerStatus != null)
+        {
+            playerStatus.NotifyGameClear();
+        }
+    }
+
+    /// <summary>
+    /// WaveData の中身を順番・数・間隔どおりにスポーン
+    /// </summary>
+    private IEnumerator PlayWave(WaveData wave)
+    {
+        if (wave == null)
+        {
+            Debug.LogError("wave が null");
+            yield break;
+        }
+
+        if (wave.Enemies == null || wave.Enemies.Length == 0)
+        {
+            Debug.LogError("Enemies が null");
+            yield break;
+        }
+
+        var spawnList = new List<EnemySpawnData>();
+
+        // WaveData の EnemySpawnData を SpawnCount 分だけ spawnList に追加
+        foreach (var enemyData in wave.Enemies)
+        {
+            for (int i = 0; i < enemyData.SpawnCount; i++)
+            {
+                spawnList.Add(enemyData);
+            }
+        }
+
+        // spawnList からランダムに EnemySpawnData を取り出してスポーン
+        while (spawnList.Count > 0)
+        {
+            int index = Random.Range(0, spawnList.Count);
+            EnemySpawnData enemyData = spawnList[index];
+
+            SpawnEnemy(enemyData);
+
+            spawnList.RemoveAt(index);
+
+            yield return new WaitForSeconds(_spawnInterval);
+        }
+    }
+
+
+    /// <summary>
+    /// 敵を1体スポーンする
+    /// </summary>
+    private void SpawnEnemy(EnemySpawnData enemyData)
+    {
+        Debug.Log($"SpawnEnemy: {enemyData.Type}");
+
+        if (EnemyPoolManager.Instance == null)
+        {
+            Debug.LogError("EnemyPoolManager.Instance が null");
+            return;
+        }
+
+        Transform spawnPoint = GetRandomSpawnPoint();
+
+        GameObject enemy = EnemyPoolManager.Instance
+            .Get(enemyData.Type, spawnPoint.position);
+
+
+        _aliveEnemyCount++;
+
+        var status = enemy.GetComponent<EnemyStatus>();
+        if (status != null)
+        {
+            status.OnDead -= OnEnemyDead;
+            status.OnDead += OnEnemyDead;
+        }
+    }
+
+
+    private void OnEnemyDead()
+    {
+        _aliveEnemyCount--;
+    }
+
+    /// <summary>
+    /// スポーン地点をランダム取得
+    /// </summary>
+    private Transform GetRandomSpawnPoint()
+    {
+        int index;
+
+        //ランダム生成を必ず1回行って判定したいからdoを使う
+        do
+        {
+            index = Random.Range(0, _spawnPoints.Length);
+        }
+        while (index == _lastSpawnIndex && _spawnPoints.Length > 1);
+
+        _lastSpawnIndex = index;
+        return _spawnPoints[index];
+    }
+}
